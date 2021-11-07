@@ -1,0 +1,14 @@
+{
+    "nombres" : "Renzo",
+    "ap_paterno" : "Guerrero",
+    "ap_materno" : "Huayta",
+    "dni":73176898,
+    "curso": "Python",
+    "nota":15, 
+    "institucion":"Sistemas UNI",
+    "condicion":"APROBADO", 
+    "prev_block" : {
+        "hash" : "",
+        "filename" : ""
+    }
+}

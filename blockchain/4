@@ -1,0 +1,14 @@
+{
+    "nombres": "Jose",
+    "ap_paterno": "Polo",
+    "ap_materno": "Avila",
+    "dni": "48967112",
+    "curso": "MACROS",
+    "nota": "19",
+    "institucion": "CTIC",
+    "condicion": "APROBADO",
+    "prev_block": {
+        "hash": "466f6e2a5c2758d80a88d8f20982086f",
+        "filename": "3"
+    }
+}

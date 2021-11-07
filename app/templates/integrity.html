@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/estilos.css') }}" >
+    <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
+    <title>Integridad de la Blockchain</title>
+</head>
+<body>
+    <div class = "general">
+        <div class = "barra_horizontal">
+            <header>
+
+                <div class = "left_area">
+                    <h3>Blockchain <span>Diplomas</span></h3>
+                </div>
+
+                <div class = "right_area">
+
+                    <a href="/panel_admin_centro" class = "logout_btn">Inicio</a>
+                
+                </div>
+            </header>
+        </div>
+
+        <div class="sidebar">
+            <center>
+                <img src="img/logo.jpg" class = "profile_image" alt="">
+            </center>
+            <a href="#"><i class="fas fa-users"></i><span>Alumnos</span></a>
+            <a href="#"><i class="fas fa-robot"></i><span>Cursos</span></a>
+            <a href="/index"><i class="fas fa-book"></i><span>Diplomas</span></a>
+            <a href="/integrity"><i class="fas fa-cubes"></i><span>Blockchain</span></a>
+        </div>
+
+        <!--sidebar end-->
+
+        <div class = "content">
+            {% for res in checking_results %} 
+
+                {% if res['estado'] == 0 %} 
+
+                    <div class = "caja_ok">
+                        <p style="text-align:center"><i class="fas fa-check"></i></p>
+                        <p style="text-align:center">Nombres:{{ res['nombres'] }}</p>
+                        <p style="text-align:center">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
+                        <p style="text-align:center">DNI:{{ res['dni'] }}</p>
+                        <p style="text-align:center">CURSO:{{ res['curso'] }}</p>
+                        <p style="text-align:center">NOTA:{{ res['nota'] }}</p>
+                        <p style="text-align:center">Institucion:{{ res['institucion'] }}</p>
+                        <p style="text-align:center">Condición:{{ res['condicion'] }}</p>
+                    </div>
+
+                    <!--Block {{ res['block'] }} : {{ res['result'] }} : {{ res['dni'] }}-->
+
+                {% elif res['estado'] == 1 %} 
+
+                    <div class = "caja_corrupta">
+                        <p style="text-align:center"><i class="fas fa-times"></i></p>
+                        <p style="text-align:center">Nombres:{{ res['nombres'] }}</p>
+                        <p style="text-align:center">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }}</p>
+                        <p style="text-align:center">DNI:{{ res['dni'] }}</p>
+                        <p style="text-align:center">CURSO:{{ res['curso'] }}</p>
+                        <p style="text-align:center">NOTA:{{ res['nota'] }}</p>
+                        <p style="text-align:center">Institucion:{{ res['institucion'] }}</p>
+                        <p style="text-align:center">Condición:{{ res['condicion'] }}</p>
+                    </div>
+
+                    <!--Block {{ res['block'] }} : {{ res['result'] }} : {{ res['condicion'] }}-->
+                
+                {% endif %}
+        
+            {% endfor %}
+            
+        </div>
+    </div>
+</body>
+
+</html>

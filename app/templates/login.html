@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/login.css') }}" >
+
+</head>
+<body>
+
+    <div id = "background-image">
+    
+    </div>
+
+    <div id = "background-overlay">
+    
+    </div>
+
+    <div id = "background-pattern">
+    
+    </div>
+
+    <div id = "login-form-container">
+
+        <div class="card" style = "width: 400px;">
+            <div id="card-image">
+                <figure class="image">
+                    <img src = "img/logo.jpg" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class = "is-size-4 has-text-centered">Login</div>
+
+                </div>
+
+                <div class="content">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Usuario">
+                            <span class="icon is-small is-left">
+                                <span class="material-icons">person</span>
+                            </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="password" placeholder="Contraseña">
+                            <span class="icon is-small is-left">
+                                <span class="material-icons">lock</span>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">
+                            <input type="checkbox" class="checkbox">
+                            Recordar
+                        </label>
+                    </div>
+
+                    <div class="field">
+                        <p class="control" style="text-align:center">
+                            <button class="button is-info" type="submit" onclick=" location.href = '/panel_admin_centro'"  >Ingresar</button>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+         </div>
+    
+    </div>
+    
+</body>
+</html>

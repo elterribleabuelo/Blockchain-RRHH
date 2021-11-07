@@ -1,0 +1,14 @@
+{
+    "nombres": "Juan",
+    "ap_paterno": "Vargas ",
+    "ap_materno": "Savedra",
+    "dni": "73176854",
+    "curso": "JAVA",
+    "nota": "14",
+    "institucion": "CTIC",
+    "condicion": "APROBADO",
+    "prev_block": {
+        "hash": "0c86bf3ede668bb6e7168230e2180525",
+        "filename": "1"
+    }
+}
