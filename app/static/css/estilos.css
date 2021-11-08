@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
+    /*width: 100%;*/
 }
 
 header{
@@ -10,11 +11,15 @@ header{
     padding: 20px; 
     width: 100%;
     height: 70px; 
-
+    left: 0;
+    top:0;
+    right: 0;
+    z-index:1;
 }
 
 .general {
     margin: auto;
+    /*position: relative;*/
     width: 100%;
     height: 100%;
 }
@@ -151,6 +156,24 @@ label #sidebar_btn:hover{
 }
 
 
+.content_diploma{
+    /*margin-bottom: 250px;
+    margin-left: 250px; 
+    background-position: center; 
+    background-size: cover; 
+    height: 100vh;
+    transition: 0.5s;*/
+    /*left: -70%;*/
+    float: right; 
+    margin-left: 100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 100%;
+    height: 500px;
+    clear: both;
+}
+
+
 .caja_ok {
     margin-bottom: 100px;
     margin-top: 50px;
@@ -174,4 +197,13 @@ label #sidebar_btn:hover{
     right: -70%;
     margin-right: 400px;
     border-style: solid;
+}
+
+
+.container_diploma{
+    padding-top: 100px;
+    width: 85%;
+    max-width: 850px;
+    margin: 0 auto;
+    z-index:0;
 }

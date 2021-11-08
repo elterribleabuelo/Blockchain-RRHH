@@ -42,13 +42,13 @@ def index():
                     institucion = institucion, condicion = condicion
                     )
 
-    return render_template('index.html') 
+    return render_template('registrar_diploma.html') 
 
 
 @app.route('/checking')
 def check(): 
     results = check_integrity()
-    return render_template('index.html', checking_results = results)
+    return render_template('registrar_diploma.html', checking_results = results)
 
 
 
@@ -58,6 +58,15 @@ def integred():
     results = check_integrity()
 
     return render_template('integrity.html', checking_results = results)
+
+@app.route('/registrar_alumno')
+def reg_alumnon():
+    return render_template('registrar_alumno.html')
+
+
+@app.route('/registrar_curso')
+def reg_curso():
+    return render_template('registrar_curso.html')
 
 if __name__ == '__main__': 
     app.run(debug = True, port = 4000)

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- METADATA -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <!-- CSS only -->
+    <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/estilos.css') }}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    
+    
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
+    
+    
+    <!-- JS only -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
+    
+    
+    <!-- TITLE -->
+    <title>Registrar alumno</title>
+</head>
+
+
+<body>
+    <div class = "general">
+        <div class = "barra_horizontal">
+            <header>
+                <div class = "left_area">
+                    <h3>Blockchain <span>Diplomas</span></h3>
+                </div>
+
+                <div class = "right_area">
+                    <a href="/panel_admin_centro" class = "logout_btn">Inicio</a>
+                </div>
+            </header>
+        </div>
+
+        
+        <main class = "main">
+            <div class = "container_diploma">
+                <div class="col-6 mx-auto mt-5">
+                    <h1 class = 'mb-5'>Registro de alumnos</h1>
+                    
+                        <form action = "{{ url_for('index') }}" method = "POST">
+
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">DNI</span>
+                                <input type="text" class="form-control" id="dni" aria-describedby="basic-addon3" name = "dni">
+                            </div>
+
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Nombres</span>
+                                <input type="text" class="form-control" id="nombres" aria-describedby="basic-addon3" name = "nombres">
+                            </div>
+                        
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Apellido Paterno</span>
+                                <input type="text" class="form-control" id="ap_paterno" aria-describedby="basic-addon3" name = "ap_paterno">
+                            </div>
+
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Apellido Materno</span>
+                                <input type="text" class="form-control" id="ap_materno" aria-describedby="basic-addon3" name = "ap_materno">
+                            </div>
+
+                           
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Curso</span>
+                                <input type="text" class="form-control" id="curso" aria-describedby="basic-addon3" name = "curso">
+                            </div>
+
+                            
+                            <div class="input-group mb-3">
+                                <div class = "input-group date" id = "datepicker">
+                                    <span class="input-group-text" id="basic-addon3">Fecha inicio</span>
+                                    <input type="text" class="form-control">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-white">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Horario</span>
+                                <select class = "form-control">
+                                    <option selected="">Seleccione el horario</option>
+                                    <option value = "1">One</option>
+                                    <option value = "2">Two</option>
+                                    <option value = "3">Three</option>
+                                </select>
+                            </div>
+                            <center><button class="btn btn-primary">Registrar</button></center>
+                    
+                        </form>
+                </div>
+            </div>
+        </main>
+    
+    </div>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/animation.js') }}"></script>
+</body>
+</html>
