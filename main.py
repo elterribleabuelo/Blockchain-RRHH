@@ -7,6 +7,7 @@ from firebase import firebase
 import firebase_configuration
 import pyrebase
 import json
+import hashlib
 
 
 # Inicializando la app
@@ -108,7 +109,11 @@ def registrar_curso():
         #sent = json.dumps(cursos)
         
         ## Agregando la data a firebase
-        db.child("proyecto").child("cursos").child(codigo).set(curso)
+        hash = json.dumps(curso, sort_keys=True).encode()
+        print(hash)
+        hash = hashlib.md5(hash).hexdigest()
+        print(hash)
+        db.child("proyecto").child("cursos").child(hash).set(curso)
         #resultado = firebase.post('/proyecto/cursos',cursos)
 
     return render_template('registrar_curso.html')

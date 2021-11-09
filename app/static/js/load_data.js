@@ -58,21 +58,58 @@ path = 'proyecto/cursos';
     var pathCursos = db.ref('proyecto/cursos');
     pathCursos.on('value',function(datos){
 
+        // Lista de cursos unicos
+        this.listaCursoUnicos = [];
+
+        // Llenando el select desde firebase
         datos.forEach((doc) => {
-            console.log(doc.val());
-            //Aquí se agregan los options de acuerdo a la base de datos.
-            $curso.innerHTML += `<option value = "${doc.val()['codigo']}"> ${doc.val()['nombre']} </option>.`
+            //console.log(doc.val());
+            // Cargamos al select solo nombre de cursos que no se repiten
+            if (!listaCursoUnicos.includes(doc.val()['codigo'])){
+                
+                // Llenando elementos a la lista
+                this.listaCursoUnicos.push(doc.val()['codigo']);
+                
+                // Llenando los elementos al select
+                // Aquí se agregan los options de acuerdo a la base de datos.
+                $curso.innerHTML += `<option value = "${doc.val()['codigo']}"> ${doc.val()['nombre']} </option>.`
+            }
         });
     });
 
 }());
 
 $curso.addEventListener('change',function(){
-    if ($curso.value == 'MC0024'){
-        $fecha_inicio.innerHTML += `<option value = "1111"> 2222 </option>.`
-    } 
+    
+    // Limpiando el select  de fecha de inicio
+    var length = $fecha_inicio.length;
+    for (i = length - 1; i >= 0; i--) {
+        $fecha_inicio.options[i] = null;
+    }
+
+    // Obteniendo la data de firebase
+    var pathCursos = db.ref('proyecto/cursos');
+    pathCursos.on('value',function(datos){
+        // Lista de fechas de inicio unicos
+        this.listaFechaInicioUnicos = []; 
+        datos.forEach((doc) => {
+            console.log(doc.val());
+            if (!listaFechaInicioUnicos.includes(doc.val()['fecha_inicio'])){ 
+
+                // Llenando elementos a la lista
+                this.listaFechaInicioUnicos.push(doc.val()['fecha_inicio']);
+
+                if ($curso.value == doc.val()['codigo']){
+                    $fecha_inicio.innerHTML += `<option value = "${doc.val()['fecha_inicio']}"> ${doc.val()['fecha_inicio']} </option>.`
+                }
+            }
+            
+        });
+    }); 
 
 });
+
+
 
 /******************************************* B. Carga de fechas de inicio *************************************/
 let fechas_inicio = [] ;
