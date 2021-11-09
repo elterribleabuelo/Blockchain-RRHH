@@ -30,7 +30,7 @@
 </head>
 
 
-<body>
+<body >
     <div class = "general">
         <div class = "barra_horizontal">
             <header>
@@ -79,32 +79,36 @@
                            
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">Curso</span>
-                                <input type="text" class="form-control" id="curso" aria-describedby="basic-addon3" name = "curso">
+                                <select class = "form-control" id = "curso" name = "curso">
+                                   <!--Debe ser dinámico desde Firebase--> 
+                                    <option selected="">Seleccione el curso</option>
+                                </select>
                             </div>
 
                             
                             <div class="input-group mb-3">
                                 <div class = "input-group date" id = "datepicker">
                                     <span class="input-group-text" id="basic-addon3">Fecha inicio</span>
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text bg-white">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                    </span>
+                                    <select class = "form-control" id = "fecha_inicio" name = "fecha_inicio">
+                                        <!--Debe ser dinámico desde Firebase--> 
+                                        <option selected="">Seleccione la fecha de inicio</option>
+                                    </select>
                                 </div>
                             </div>
 
                             
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Horario</span>
-                                <select class = "form-control">
-                                    <option selected="">Seleccione el horario</option>
-                                    <option value = "1">One</option>
-                                    <option value = "2">Two</option>
-                                    <option value = "3">Three</option>
-                                </select>
+                                <div class = "input-group date" id = "datepicker">
+                                    <span class="input-group-text" id = "basic-addon3">Horario</span>
+                                    <select class = "form-control" id = "horario" name = "horario">
+                                        <!--Debe ser dinámico desde Firebase--> 
+                                        <!--En formato de horas por ejemplo 08:00 - 10:00 -->
+                                        <option selected="">Seleccione el horario</option>
+                                    </select>
+                                </div>
                             </div>
+
+
                             <center><button class="btn btn-primary">Registrar</button></center>
                     
                         </form>
@@ -113,6 +117,9 @@
         </main>
     
     </div>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/load_data.js') }}"></script>
     <script type="text/javascript" src = "{{ url_for('static', filename = 'js/animation.js') }}"></script>
 </body>
 </html>

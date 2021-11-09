@@ -50,41 +50,52 @@
             <div class = "container_diploma">
                 <div class="col-6 mx-auto mt-5">
                     <h1 class = 'mb-5'>Registro de cursos</h1>
-                    
-                        <form action = "{{ url_for('index') }}" method = "POST">
+
+                        <form action = "{{ url_for('registrar_curso') }}" method = "POST">
 
                             
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">Codigo</span>
-                                <input type="text" class="form-control" id="dni" aria-describedby="basic-addon3" name = "dni">
+                                <input type="text" class="form-control" id = "codigo" aria-describedby="basic-addon3" name = "codigo">
                             </div>
 
                             
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">Nombre</span>
-                                <input type="text" class="form-control" id="nombres" aria-describedby="basic-addon3" name = "nombres">
+                                <input type="text" class="form-control" id = "nombre" aria-describedby="basic-addon3" name = "nombre">
                             </div>
                         
                             
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">Tipo</span>
-                                 <select class = "form-control">
+                                 <select class = "form-control" id = "tipo" name = "tipo">
                                     <option selected="">Seleccione el tipo</option>
-                                    <option value = "1">Curso Libre</option>
-                                    <option value = "2">Diplomado</option>
+                                    <option value = "curso libre">Curso Libre</option>
+                                    <option value = "diplomado">Diplomado</option>
                                 </select>
                             </div>
 
                             
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">Horas</span>
-                                <input type="text" id="light-version-examples" class="form-control" placeholder = "Ingrese el número de horas totales">
+                                <input type="text" id="horas" name = "horas" class="form-control" placeholder = "Ingrese el número de horas totales">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Días</span>
+                                <select class = "form-control" id = "dia" name = "dia">
+                                    <option selected="">Seleccione los días</option>
+                                    <option value = "Lunes y Miércoles">Lun - Mierc</option>
+                                    <option value = "Martes y Jueves">Mart - Juev</option>
+                                    <option value = "Sábado">Sábado</option>
+                                    <option value = "Sábado">Domingo</option>
+                                </select>
                             </div>
                             
                             <div class="input-group mb-3">
-                                <div class = "input-group date" id = "datepicker">
+                                <div class = "input-group date" id = "datepicker_inicio">
                                     <span class="input-group-text" id="basic-addon3">Fecha inicio</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id = "fecha_inicio" name = "fecha_inicio">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -94,9 +105,9 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <div class = "input-group date" id = "datepicker">
-                                    <span class="input-group-text" id="basic-addon3">Fecha Fin </span>
-                                    <input type="text" class="form-control">
+                                <div class = "input-group date" id = "datepicker_fin">
+                                    <span class="input-group-text" id="basic-addon3">Fecha fin</span>
+                                    <input type="text" class="form-control" id = "fecha_fin" name = "fecha_fin">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -107,11 +118,21 @@
 
                             
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Horario</span>
-                                <input type="text" class="form-control clockpicker" data-placement = "right" data-align="top" data-autoclose="true" readonly = "" value = "11:00">
+                                <span class="input-group-text" id="basic-addon3">Hora inicio</span>
+                                <input type="text" id = "hora_inicio" name = "hora_inicio" class="form-control clockpicker" data-placement = "right" data-align="top" data-autoclose="true" readonly = "" value = "11:00">
                                 <span class="glyphicon glyphicon-time"></span>
                             </div>
-                            <center><button class="btn btn-primary">Registrar</button></center>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Hora fin</span>
+                                <input type="text" id = "hora_fin" name = "hora_fin" class="form-control clockpicker" data-placement = "right" data-align="top" data-autoclose="true" readonly = "" value = "12:00">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </div>
+
+
+                            <center>
+                                <button class="btn btn-primary">Registrar</button>
+                            </center>
                     
                         </form>
                 </div>
