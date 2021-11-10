@@ -70,8 +70,46 @@ def integred():
 
 
 ### Ruta para registrar un alumno dentro de un curso
-@app.route('/registrar_alumno')
-def reg_alumnon():
+@app.route('/registrar_alumno', methods = ['POST', 'GET'])
+def registrar_alumno():
+    if request.method == 'POST':
+        
+        ### Identificador del bloque de alumno ###
+        dni = request.form.get('dni')
+        
+        ### Informacion general ###
+        nombres = request.form.get('nombres')
+        ap_paterno = request.form.get('ap_paterno')
+        ap_materno = request.form.get('ap_materno')
+        
+        ### Informacion del curso ###
+        curso = request.form.get('curso')
+        fecha_inicio = request.form.get('fecha_inicio')
+        horario = request.form.get('horario')
+        
+        ### Creamos los arreglos ####
+        # Alumno
+        alumno = {}
+        alumno['dni'] = dni
+        alumno['nombres'] = nombres 
+        alumno['ap_paterno'] = ap_paterno 
+        alumno['ap_materno'] = ap_materno
+        
+        # Alumno - Curso 
+        alumno_curso = {}
+        alumno_curso['curso'] = curso 
+        alumno_curso['fecha_inicio'] = fecha_inicio 
+        alumno_curso['horario'] = horario
+        
+        
+        ### Agregando la data a firebase
+        # Tabla alumno
+        alumn_ref =  db.child("proyecto").child("alumnos").child(dni)
+        alumn_ref.set(alumno)
+        
+        # Tabla alumnos-cursos
+        db.child("proyecto").child("alumnos_cursos").child(dni).child(curso).set(alumno_curso)
+        
     return render_template('registrar_alumno.html')
 
 

@@ -87,20 +87,30 @@ $curso.addEventListener('change',function(){
         $fecha_inicio.options[i] = null;
     }
 
+    // Limpiando el select  de horario
+    var horario_length = $horario.length;
+    for (i = horario_length - 1; i >= 0; i--) {
+        $horario.options[i] = null;
+    }
+
+    $fecha_inicio.innerHTML += `<option value = "1234"> Seleccione la fecha de inicio </option>.`
+    $horario.innerHTML += `<option value = "1234"> Seleccione el horario </option>.`
+
     // Obteniendo la data de firebase
     var pathCursos = db.ref('proyecto/cursos');
     pathCursos.on('value',function(datos){
         // Lista de fechas de inicio unicos
         this.listaFechaInicioUnicos = []; 
         datos.forEach((doc) => {
-            console.log(doc.val());
+            //console.log(doc.val());
             if (!listaFechaInicioUnicos.includes(doc.val()['fecha_inicio'])){ 
 
                 // Llenando elementos a la lista
                 this.listaFechaInicioUnicos.push(doc.val()['fecha_inicio']);
 
                 if ($curso.value == doc.val()['codigo']){
-                    $fecha_inicio.innerHTML += `<option value = "${doc.val()['fecha_inicio']}"> ${doc.val()['fecha_inicio']} </option>.`
+                    var duracion_total = doc.val()['fecha_inicio'] + "-" + doc.val()['fecha_fin'];
+                    $fecha_inicio.innerHTML += `<option value = "${duracion_total}"> ${duracion_total} </option>.`
                 }
             }
             
@@ -109,27 +119,35 @@ $curso.addEventListener('change',function(){
 
 });
 
+$fecha_inicio.addEventListener('change',function(){
 
-
-/******************************************* B. Carga de fechas de inicio *************************************/
-let fechas_inicio = [] ;
-
-
-let horarios = [] ;
-
-// Mostrar en el HTML 
-function mostrarDatos(arreglo,lugar){
-    let elementos = '<option select disable> -- Seleccione -- </option>'
-
-    for(let i = 0; i < arreglo.length; i++){ 
-        elementos += '<option value = "' + arreglo[i] + '">' + 
-        arreglo[i] + '</option>'
+    // Limpiando el select  de horario
+    var horario_length = $horario.length;
+    for (i = horario_length - 1; i >= 0; i--) {
+        $horario.options[i] = null;
     }
 
-    lugar.innerHTML = elementos 
-}
+    $horario.innerHTML += `<option value = "1234"> Seleccione el horario </option>.`
 
-$curso.addEventListener('change',function(){
-    let valor = $curso.value 
+    // Obteniendo la data de firebase
+    var pathCursos = db.ref('proyecto/cursos'); 
 
-})
+
+    pathCursos.on('value',function(datos){
+        // Lista de horarios únicos 
+        this.listaHorariosUnicos = []; 
+        datos.forEach((doc) => { 
+            if (!listaHorariosUnicos.includes(doc.val()['hora_inicio'])){
+                this.listaHorariosUnicos.push(doc.val()['hora_inicio']);
+            }
+            var duracion_total = doc.val()['fecha_inicio'] + "-" + doc.val()['fecha_fin'];
+            // Llenamos el select de horario segun los campos ya asignados en los select de curso y fecha
+            if (($curso.value == doc.val()['codigo'] && $fecha_inicio.value == duracion_total) == true){
+                var horario_total = doc.val()['hora_inicio'] + "-" + doc.val()['hora_fin'];
+                $horario.innerHTML += `<option value = "${horario_total}"> ${horario_total} </option>.`
+            }
+
+        });
+    });
+
+});
