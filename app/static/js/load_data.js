@@ -1,6 +1,6 @@
 // Variables desde el HTML
 let $curso = document.getElementById('curso');
-let $fecha_inicio = document.getElementById('fecha_inicio');
+let $fecha_inicio_fin = document.getElementById('fecha_inicio_fin');
 let $horario = document.getElementById('horario') ;
 
 // Conexion a firebase
@@ -82,9 +82,9 @@ path = 'proyecto/cursos';
 $curso.addEventListener('change',function(){
     
     // Limpiando el select  de fecha de inicio
-    var length = $fecha_inicio.length;
+    var length = $fecha_inicio_fin.length;
     for (i = length - 1; i >= 0; i--) {
-        $fecha_inicio.options[i] = null;
+        $fecha_inicio_fin.options[i] = null;
     }
 
     // Limpiando el select  de horario
@@ -93,7 +93,7 @@ $curso.addEventListener('change',function(){
         $horario.options[i] = null;
     }
 
-    $fecha_inicio.innerHTML += `<option value = "1234"> Seleccione la fecha de inicio </option>.`
+    $fecha_inicio_fin.innerHTML += `<option value = "1234"> Seleccione la fecha de inicio </option>.`
     $horario.innerHTML += `<option value = "1234"> Seleccione el horario </option>.`
 
     // Obteniendo la data de firebase
@@ -110,7 +110,7 @@ $curso.addEventListener('change',function(){
 
                 if ($curso.value == doc.val()['codigo']){
                     var duracion_total = doc.val()['fecha_inicio'] + "-" + doc.val()['fecha_fin'];
-                    $fecha_inicio.innerHTML += `<option value = "${duracion_total}"> ${duracion_total} </option>.`
+                    $fecha_inicio_fin.innerHTML += `<option value = "${duracion_total}"> ${duracion_total} </option>.`
                 }
             }
             
@@ -119,7 +119,7 @@ $curso.addEventListener('change',function(){
 
 });
 
-$fecha_inicio.addEventListener('change',function(){
+$fecha_inicio_fin.addEventListener('change',function(){
 
     // Limpiando el select  de horario
     var horario_length = $horario.length;
@@ -142,7 +142,7 @@ $fecha_inicio.addEventListener('change',function(){
             }
             var duracion_total = doc.val()['fecha_inicio'] + "-" + doc.val()['fecha_fin'];
             // Llenamos el select de horario segun los campos ya asignados en los select de curso y fecha
-            if (($curso.value == doc.val()['codigo'] && $fecha_inicio.value == duracion_total) == true){
+            if (($curso.value == doc.val()['codigo'] && $fecha_inicio_fin.value == duracion_total) == true){
                 var horario_total = doc.val()['hora_inicio'] + "-" + doc.val()['hora_fin'];
                 $horario.innerHTML += `<option value = "${horario_total}"> ${horario_total} </option>.`
             }

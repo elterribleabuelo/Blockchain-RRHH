@@ -83,9 +83,30 @@ def registrar_alumno():
         ap_materno = request.form.get('ap_materno')
         
         ### Informacion del curso ###
-        curso = request.form.get('curso')
-        fecha_inicio = request.form.get('fecha_inicio')
+        cod_curso = request.form.get('curso') #codigo del curso
+        fecha_inicio_fin = request.form.get('fecha_inicio_fin')
         horario = request.form.get('horario')
+        
+        ### Obtenemos el nombre del curso en base al codigo obtenido
+        # Tabla curso
+        curso_ref =  db.child("proyecto/cursos").get()
+        curso_val = curso_ref.val()
+        curso_val = curso_val.items()
+        curso_val = list(curso_val)
+       
+        num_cursos = len(curso_val)
+        
+        lista_cursos = []
+
+        ### Búsqueda del código del curso en Firebase
+        for i in range(num_cursos):
+            if (cod_curso == curso_val[i][1]['codigo']):
+                lista_cursos.append(curso_val[i][1]['nombre']) 
+        
+        lista_cursos = list(set(lista_cursos))
+        
+        ### Nombre del curso en base al codigo
+        nomb_curso = lista_cursos[0]
         
         ### Creamos los arreglos ####
         # Alumno
@@ -97,8 +118,8 @@ def registrar_alumno():
         
         # Alumno - Curso 
         alumno_curso = {}
-        alumno_curso['curso'] = curso 
-        alumno_curso['fecha_inicio'] = fecha_inicio 
+        alumno_curso['curso'] = nomb_curso ### nomb_curso 
+        alumno_curso['fecha_inicio_fin'] = fecha_inicio_fin
         alumno_curso['horario'] = horario
         
         
@@ -108,7 +129,7 @@ def registrar_alumno():
         alumn_ref.set(alumno)
         
         # Tabla alumnos-cursos
-        db.child("proyecto").child("alumnos_cursos").child(dni).child(curso).set(alumno_curso)
+        db.child("proyecto").child("alumnos_cursos").child(dni).child(cod_curso).set(alumno_curso)
         
     return render_template('registrar_alumno.html')
 
