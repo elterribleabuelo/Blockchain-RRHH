@@ -34,22 +34,41 @@ def panel_admin_centro():
 
 
 ## Ruta del registro de diplomas
-@app.route('/index', methods = ['POST', 'GET'])
-def index():
-    if request.method == 'POST': 
-        nombres = request.form.get('nombres') 
-        ap_paterno = request.form.get('ap_paterno') 
-        ap_materno = request.form.get('ap_materno')
-        dni = request.form.get('dni')
-        curso = request.form.get('curso')
+@app.route('/registrar_diploma', methods = ['POST', 'GET'])
+def registrar_diploma():
+    if request.method == 'POST':
+        
+        ### Obtenemos las variables del formulario
+        dni = request.form.get('dni') 
+        nomb_curso = request.form.get('nomb_curso') 
         nota = request.form.get('nota')
-        institucion = request.form.get('institucion')
-        condicion = request.form.get('condicion') 
+        institucion = request.form.get('institucio')
+        
+        ### Obtenemos algunas variables más necesarias para el diploma ###
+        ### Consultando Firebase ###
+        alumno_ref =  db.child("proyecto/alumnos").child(dni)
+        alumno_data = alumno_ref.get()
+        alumno_val = alumno_data.val()
+        alumno_val = alumno_val.items()
+        alumno_val = list(alumno_val)
+        print(alumno_val)
+        
+        # Nombre
+        nombres = alumno_val[3][1]
+        # Apelido paterno
+        ap_paterno = alumno_val[1][1]
+        # Apelido materno
+        ap_materno = alumno_val[0][1]
+        # Condicion
+        if (int(nota) > 14):
+            condicion = "Aprobado"
+        else:
+            condicion = "Desaprobado"
 
-        write_block(nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno, 
-                    dni = dni, curso = curso , nota = nota, 
+        """write_block(nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno, 
+                    dni = dni, curso = nomb_curso , nota = nota, 
                     institucion = institucion, condicion = condicion
-                    )
+                    )"""
 
     return render_template('registrar_diploma.html') 
 

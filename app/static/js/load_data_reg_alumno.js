@@ -54,6 +54,7 @@ var db = firebase.database();
 /** 5.Agrupando todo en una función */
 path = 'proyecto/cursos';
 
+// Cargando los cursos de forma automática
 (function(){
     var pathCursos = db.ref('proyecto/cursos');
     pathCursos.on('value',function(datos){

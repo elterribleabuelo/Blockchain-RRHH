@@ -34,44 +34,28 @@
                 <div class="col-6 mx-auto mt-5">
                     <h1 class = 'mb-5'>Registro de diplomas</h1>
                     
-                        <form action = "{{ url_for('index') }}" method = "POST">
+                        <form action = "{{ url_for('registrar_diploma') }}" method = "POST">
 
-                            <label for="nombres" class="form-label">Nombres</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Nombres</span>
-                                <input type="text" class="form-control" id="nombres" aria-describedby="basic-addon3" name = "nombres">
-                            </div>
-                        
-                            <label for="ap_paterno" class="form-label">Apellido Paterno</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Apellido Paterno</span>
-                                <input type="text" class="form-control" id="ap_paterno" aria-describedby="basic-addon3" name = "ap_paterno">
-                            </div>
-
-                            <label for="ap_materno" class="form-label">Apellido Materno</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Apellido Materno</span>
-                                <input type="text" class="form-control" id="ap_materno" aria-describedby="basic-addon3" name = "ap_materno">
-                            </div>
-
-                            <label for="dni" class="form-label">DNI</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">DNI</span>
-                                <input type="text" class="form-control" id="dni" aria-describedby="basic-addon3" name = "dni">
+                                <select class = "form-control" id = "dni" name = "dni">
+                                   <!--Debe ser dinámico desde Firebase--> 
+                                    <option selected="">Seleccione el dni del alumno</option>
+                                </select>
                             </div>
-
-
-
-                            <label for="curso" class="form-label">Curso</label>
+                            <!--Aquí viaja como value el cod_curso pero se muestra en el select el nombre del curso-->
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Curso</span>
-                                <input type="text" class="form-control" id="curso" aria-describedby="basic-addon3" name = "curso">
+                                <span class="input-group-text" id="basic-addon3">Nombre del Curso</span>
+                                <select class = "form-control" id = "nomb_curso" name = "cod_curso">
+                                   <!--Debe ser dinámico desde Firebase-->
+                                    <option selected="">Seleccione el nombre del curso</option>
+                                </select>
                             </div>
 
                             <label for="nota" class="form-label">Nota</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon3">Nota</span>
-                                <input type="text" class="form-control" id="nota" aria-describedby="basic-addon3" name = "nota">
+                                <input type="text" class="form-control" id = "nota" aria-describedby = "basic-addon3" name = "nota">
                             </div>
 
 
@@ -81,12 +65,7 @@
                                 <input type="text" class="form-control" id="institucion" aria-describedby="basic-addon3" name = "institucion">
                             </div>
 
-                            <label for="condicion" class="form-label">Condición</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Condición</span>
-                                <input type="text" class="form-control" id = "condicion" aria-describedby="basic-addon3" name = "condicion">
-                            </div>
-
+                            <!--Condicion : Aprobado o Desaprobado-->
                             <button class="btn btn-primary">Registrar</button>
                     
                         </form>
@@ -95,6 +74,11 @@
         </main>
     
     </div>
+
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/load_data_reg_diploma.js') }}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/animation.js') }}"></script>
     
 </body>
 </html>
