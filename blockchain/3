@@ -1,14 +1,15 @@
 {
-    "nombres": "Sol",
-    "ap_paterno": "Ramirez ",
-    "ap_materno": "Caceres",
-    "dni": "48967112",
-    "curso": "EXCEL",
-    "nota": "13",
+    "nombres": "Monica",
+    "ap_paterno": "Huayta",
+    "ap_materno": "Rodriguez",
+    "dni": "08563113",
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": "19",
     "institucion": "CTIC",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "6019dbea1f9ed62c590aa2e001734c97",
+        "hash": "6eaa6efd790aaa41610781237eb227f767e87e6327a60109affd90a9af124661",
         "filename": "2"
     }
 }

@@ -39,13 +39,14 @@ def registrar_diploma():
     if request.method == 'POST':
         
         ### Obtenemos las variables del formulario
-        dni = request.form.get('dni') 
-        nomb_curso = request.form.get('nomb_curso') 
-        nota = request.form.get('nota')
-        institucion = request.form.get('institucio')
+        dni = request.form.get('dni') # Va a la Blockchain
+        nomb_curso = request.form.get('nomb_curso') # Va a la Blockchain
+        nota = request.form.get('nota') # Va a la Blockchain
+        institucion = request.form.get('institucion') # Va a la Blockchain
         
         ### Obtenemos algunas variables más necesarias para el diploma ###
         ### Consultando Firebase ###
+        #### Tabla alumnos ####
         alumno_ref =  db.child("proyecto/alumnos").child(dni)
         alumno_data = alumno_ref.get()
         alumno_val = alumno_data.val()
@@ -54,21 +55,40 @@ def registrar_diploma():
         print(alumno_val)
         
         # Nombre
-        nombres = alumno_val[3][1]
+        nombres = alumno_val[3][1] # Va a la Blockchain
+        
         # Apelido paterno
-        ap_paterno = alumno_val[1][1]
+        ap_paterno = alumno_val[1][1] # Va a la Blockchain
+        
         # Apelido materno
-        ap_materno = alumno_val[0][1]
+        ap_materno = alumno_val[0][1] # Va a la Blockchain
+        
         # Condicion
         if (int(nota) > 14):
-            condicion = "Aprobado"
+            condicion = "APROBADO" # Va a la Blockchain
         else:
-            condicion = "Desaprobado"
+            condicion = "DESAPROBADO"
 
-        """write_block(nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno, 
-                    dni = dni, curso = nomb_curso , nota = nota, 
+        ### Tabla alumnos-cursos ###
+        alumno_curso_ref =  db.child("proyecto/alumnos_cursos").child(dni)
+        alumno_ref_data = alumno_curso_ref.get()
+        alumno_ref_val = alumno_ref_data.val()
+        alumno_ref_val = alumno_ref_val.items()
+        alumno_ref_val = list(alumno_ref_val)
+        alumno_ref_val_long = len(alumno_ref_val)
+        
+        ### Buscamos la fecha de inicio - fin
+        for i in range(alumno_ref_val_long): 
+            if (nomb_curso == alumno_ref_val[i][1]['curso']):
+                fecha_inicio_fin = str(alumno_ref_val[i][1]['fecha_inicio_fin']) # Va a la Blockchain
+        
+        """print("Datos que llegan a la blockchain:" , dni,nombres,ap_paterno,ap_materno,nomb_curso,
+              fecha_inicio_fin,nota,condicion,institucion)"""
+        
+        write_block(dni = dni, nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno,
+                    curso = nomb_curso ,fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
                     institucion = institucion, condicion = condicion
-                    )"""
+                    )
 
     return render_template('registrar_diploma.html') 
 

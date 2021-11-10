@@ -1,14 +1,15 @@
 {
-    "nombres": "Juan",
-    "ap_paterno": "Vargas ",
-    "ap_materno": "Savedra",
-    "dni": "73176854",
-    "curso": "JAVA",
-    "nota": "14",
-    "institucion": "CTIC",
+    "nombres": "Monica",
+    "ap_paterno": "Huayta",
+    "ap_materno": "Rodriguez",
+    "dni": "08563113",
+    "curso": "Java Intermedio",
+    "fecha_inicio_fin": "12/23/2021-12/30/2021",
+    "nota": "16",
+    "institucion": "CEPS",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "0c86bf3ede668bb6e7168230e2180525",
+        "hash": "eb2db293babb74963cd265d66821cd81e3b5d017fd06a8b31a3b041d814ccc73",
         "filename": "1"
     }
 }

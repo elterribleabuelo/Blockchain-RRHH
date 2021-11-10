@@ -1,14 +1,15 @@
 {
-    "nombres": "Jose",
-    "ap_paterno": "Polo",
-    "ap_materno": "Avila",
-    "dni": "48967112",
-    "curso": "MACROS",
-    "nota": "19",
-    "institucion": "CTIC",
+    "nombres": "Renzo Alexis",
+    "ap_paterno": "Guerrero ",
+    "ap_materno": "Huayta",
+    "dni": "73176898",
+    "curso": "Java Intermedio",
+    "fecha_inicio_fin": "11/25/2021-11/30/2021",
+    "nota": "18",
+    "institucion": "UNI",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "466f6e2a5c2758d80a88d8f20982086f",
+        "hash": "64e8aaeef94c20f01fe5474da486a74fc54403e8cf4a8b4b931dd34d0604f95d",
         "filename": "3"
     }
 }

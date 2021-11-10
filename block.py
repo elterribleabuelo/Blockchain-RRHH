@@ -8,7 +8,7 @@ BLOCKCHAIN_DIR = 'blockchain/'
 def get_hash(prev_block): 
     with open(BLOCKCHAIN_DIR + prev_block, 'rb') as f:
         content = f.read() 
-    return hashlib.md5(content).hexdigest()
+    return hashlib.sha256(content).hexdigest()
 
 
 
@@ -30,6 +30,7 @@ def check_integrity():
         ap_materno = block.get('ap_materno')
         dni = block.get('dni')
         curso = block.get('curso')
+        fecha_inicio_fin = block.get('fecha_inicio_fin')
         nota = block.get('nota')
         institucion = block.get('institucion')
         condicion = block.get('condicion')
@@ -50,7 +51,7 @@ def check_integrity():
 
         results.append({'block' : int(prev_filename) + 1, 'result': res, 'estado': estado, 
                         'nombres':nombres, 'ap_paterno' : ap_paterno,'ap_materno': ap_materno,
-                        'dni' : dni,'curso': curso, 'nota' : nota,'institucion': institucion,
+                        'dni' : dni,'curso': curso,'fecha_inicio_fin':fecha_inicio_fin, 'nota' : nota,'institucion': institucion,
                         'condicion': condicion}) # Aca deben viajar las variables
 
     return results 
@@ -77,7 +78,7 @@ def read_blockchain(num_registro):
 
 
 
-def write_block(nombres, ap_paterno, ap_materno,curso,nota,institucion,condicion,dni):
+def write_block(dni, nombres, ap_paterno, ap_materno,curso,fecha_inicio_fin,nota,institucion,condicion):
 
     blocks_count = len(os.listdir(BLOCKCHAIN_DIR)) # numero de registros del blockchain
     prev_block = str(blocks_count) # int a str
@@ -88,6 +89,7 @@ def write_block(nombres, ap_paterno, ap_materno,curso,nota,institucion,condicion
         "ap_materno" : ap_materno,
         "dni" : dni,
         "curso" : curso,
+        "fecha_inicio_fin":fecha_inicio_fin,
         "nota" : nota,
         "institucion" : institucion,
         "condicion" : condicion,
