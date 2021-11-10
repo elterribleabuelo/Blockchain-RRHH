@@ -1,15 +1,15 @@
 {
-    "nombres": "Monica",
-    "ap_paterno": "Huayta",
-    "ap_materno": "Rodriguez",
-    "dni": "08563113",
-    "curso": "Excel",
-    "fecha_inicio_fin": "11/30/2021-12/11/2021",
-    "nota": "19",
-    "institucion": "CTIC",
+    "nombres": "Renzo Alexis",
+    "ap_paterno": "Guerrero ",
+    "ap_materno": "Huayta",
+    "dni": 73176898,
+    "curso": "Java Intermedio",
+    "fecha_inicio_fin": "11/25/2021-11/30/2021",
+    "nota": 20,
+    "institucion": "SISTEMAS UNI",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "6eaa6efd790aaa41610781237eb227f767e87e6327a60109affd90a9af124661",
+        "hash": "4fd74c101a6cef7ef313ed6106df810c",
         "filename": "2"
     }
 }

@@ -1,15 +1,15 @@
 {
-    "nombres": "Renzo Alexis",
-    "ap_paterno": "Guerrero ",
-    "ap_materno": "Huayta",
-    "dni": "73176898",
+    "nombres": "Javier",
+    "ap_paterno": "Huaman",
+    "ap_materno": "Cardenas",
+    "dni": 87654321,
     "curso": "Java Intermedio",
     "fecha_inicio_fin": "11/25/2021-11/30/2021",
-    "nota": "18",
-    "institucion": "UNI",
+    "nota": 19,
+    "institucion": "UNMSM",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "64e8aaeef94c20f01fe5474da486a74fc54403e8cf4a8b4b931dd34d0604f95d",
+        "hash": "b59c267a3a91328928fde4b4c2ad68ce",
         "filename": "3"
     }
 }

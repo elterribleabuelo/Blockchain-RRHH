@@ -46,10 +46,12 @@
 
                     <div class = "caja_ok">
                         <p style="text-align:center"><i class="fas fa-check"></i></p>
+                        <span> Bloque : {{res['block']}}</span>
                         <p style="text-align:center">Nombres:{{ res['nombres'] }}</p>
                         <p style="text-align:center">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
                         <p style="text-align:center">DNI:{{ res['dni'] }}</p>
                         <p style="text-align:center">CURSO:{{ res['curso'] }}</p>
+                        <p style="text-align:center">Fechas:{{ res['fecha_inicio_fin'] }}</p>
                         <p style="text-align:center">NOTA:{{ res['nota'] }}</p>
                         <p style="text-align:center">Institucion:{{ res['institucion'] }}</p>
                         <p style="text-align:center">Condición:{{ res['condicion'] }}</p>
@@ -61,10 +63,12 @@
 
                     <div class = "caja_corrupta">
                         <p style="text-align:center"><i class="fas fa-times"></i></p>
+                        <span> Bloque : {{res['block']}}</span>
                         <p style="text-align:center">Nombres:{{ res['nombres'] }}</p>
                         <p style="text-align:center">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }}</p>
                         <p style="text-align:center">DNI:{{ res['dni'] }}</p>
                         <p style="text-align:center">CURSO:{{ res['curso'] }}</p>
+                        <!--<p style="text-align:center">Fechas:{{ res['fecha_inicio_fin'] }}</p> -->
                         <p style="text-align:center">NOTA:{{ res['nota'] }}</p>
                         <p style="text-align:center">Institucion:{{ res['institucion'] }}</p>
                         <p style="text-align:center">Condición:{{ res['condicion'] }}</p>
@@ -78,6 +82,7 @@
             
         </div>
     </div>
+    <!--Implementar un alert que indique que registros de la Blockchain fueron adulterados-->
 </body>
 
 </html>

@@ -86,7 +86,7 @@ def registrar_diploma():
               fecha_inicio_fin,nota,condicion,institucion)"""
         
         write_block(dni = dni, nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno,
-                    curso = nomb_curso ,fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
+                    curso = nomb_curso , fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
                     institucion = institucion, condicion = condicion
                     )
 
@@ -209,7 +209,7 @@ def registrar_curso():
         ## Agregando la data a firebase
         hash = json.dumps(curso, sort_keys=True).encode()
         print(hash)
-        hash = hashlib.md5(hash).hexdigest()
+        hash = hashlib.sha256(hash).hexdigest()
         print(hash)
         db.child("proyecto").child("cursos").child(hash).set(curso)
         #resultado = firebase.post('/proyecto/cursos',cursos)

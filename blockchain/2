@@ -2,14 +2,14 @@
     "nombres": "Monica",
     "ap_paterno": "Huayta",
     "ap_materno": "Rodriguez",
-    "dni": "08563113",
+    "dni": 8563113,
     "curso": "Java Intermedio",
     "fecha_inicio_fin": "12/23/2021-12/30/2021",
-    "nota": "16",
-    "institucion": "CEPS",
+    "nota": 16,
+    "institucion": "CTIC UNI",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "eb2db293babb74963cd265d66821cd81e3b5d017fd06a8b31a3b041d814ccc73",
+        "hash": "bde5a2af8e7475d4c0df024d2a6b6b53",
         "filename": "1"
     }
 }

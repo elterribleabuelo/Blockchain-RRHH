@@ -8,10 +8,7 @@ BLOCKCHAIN_DIR = 'blockchain/'
 def get_hash(prev_block): 
     with open(BLOCKCHAIN_DIR + prev_block, 'rb') as f:
         content = f.read() 
-    return hashlib.sha256(content).hexdigest()
-
-
-
+    return hashlib.md5(content).hexdigest()
 
 
 def check_integrity(): 
@@ -20,38 +17,48 @@ def check_integrity():
     #print(files)
 
 
-    for file in files[1:]: 
-        #print("File:",file)
+    for file in reversed(files[1:]): 
+        ## Entro al bloque 3
         with open(BLOCKCHAIN_DIR + file) as f: 
             block = json.load(f) 
 
+        ######################## Datos del bloque actual ###############################
+        ######################## Por ejemplo: Bloque 8 #################################
         nombres = block.get('nombres')
         ap_paterno = block.get('ap_paterno')
         ap_materno = block.get('ap_materno')
-        dni = block.get('dni')
+        dni = int(block.get('dni'))
         curso = block.get('curso')
         fecha_inicio_fin = block.get('fecha_inicio_fin')
-        nota = block.get('nota')
+        nota = int(block.get('nota'))
         institucion = block.get('institucion')
         condicion = block.get('condicion')
-        prev_hash = block.get('prev_block').get('hash') # PREV_HASH DEL BLOQUE 9 , PERO QUE PERTENECE AL BLOQUE 8
-        prev_filename = block.get('prev_block').get('filename') # OBTENEMOS EL NÚMERO DEL BLOQUE ANTERIOR
+        
+        ######################## HASH del bloque anterior #################################
+        ####Bloque actual = 8 ####
+        ##### Por ejemplo: Bloque 8-1 = 7 (bloque anterior) ######
+        ##### Prev_hash del bloque 8, pero que codifica informacion del bloque 7 #####
+        prev_hash = block.get('prev_block').get('hash') 
+        
+        #######################  NUMERO DE BLOQUE ANTERIOR (1 menos que el actual)  #################################
+        #####   Por ejemplo: Bloque 8-1 = 7 #####
+        prev_filename = block.get('prev_block').get('filename') ### 7
 
-        actual_hash = get_hash(prev_filename) # HASH DEL BLOQUE ANTERIOR (8)
+        ####################### HASH ACTUAL DEL BLOQUE ANTERIOR (7) ###############################################
+        actual_hash = get_hash(prev_filename)  ### El que puede ser modificado (escribiendo otro valor en algun dato del bloque 7)
 
         if prev_hash == actual_hash: 
-            res = 'Ok'
-            estado = 0
+            estado = 0 # No ha sido cambiado los valores de la blockchain
         
         else: 
-            res = 'ha sido cambiado'
-            estado = 1
+            estado = 1 # Si ha sido cambiado los valores de la blockchain
 
         #print(f'Bloque {prev_filename}: {res}') 
-
-        results.append({'block' : int(prev_filename) + 1, 'result': res, 'estado': estado, 
+        
+        
+        results.append({'block' : int(prev_filename) + 1,'estado': estado, 
                         'nombres':nombres, 'ap_paterno' : ap_paterno,'ap_materno': ap_materno,
-                        'dni' : dni,'curso': curso,'fecha_inicio_fin':fecha_inicio_fin, 'nota' : nota,'institucion': institucion,
+                        'dni' : dni,'curso': curso, 'fecha_inicio_fin':fecha_inicio_fin, 'nota' : nota,'institucion': institucion,
                         'condicion': condicion}) # Aca deben viajar las variables
 
     return results 
@@ -78,7 +85,7 @@ def read_blockchain(num_registro):
 
 
 
-def write_block(dni, nombres, ap_paterno, ap_materno,curso,fecha_inicio_fin,nota,institucion,condicion):
+def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,nota,institucion,condicion):
 
     blocks_count = len(os.listdir(BLOCKCHAIN_DIR)) # numero de registros del blockchain
     prev_block = str(blocks_count) # int a str
@@ -87,10 +94,10 @@ def write_block(dni, nombres, ap_paterno, ap_materno,curso,fecha_inicio_fin,nota
         "nombres" : nombres,
         "ap_paterno" : ap_paterno,
         "ap_materno" : ap_materno,
-        "dni" : dni,
+        "dni" : int(dni),
         "curso" : curso,
         "fecha_inicio_fin":fecha_inicio_fin,
-        "nota" : nota,
+        "nota" : int(nota),
         "institucion" : institucion,
         "condicion" : condicion,
         "prev_block":{
