@@ -65,7 +65,14 @@
                                 <input type="text" class="form-control" id="institucion" aria-describedby="basic-addon3" name = "institucion">
                             </div>
 
+                            <!--<label for="institucion" class="form-label">Subir diploma</label>
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" id = "imagen_diploma" aria-describedby="basic-addon3" name = "imagen_diploma">
+                            </div>-->
+                            
+
                             <!--Condicion : Aprobado o Desaprobado-->
+                            <!--onclick = "uploadImage()-->
                             <button class="btn btn-primary">Registrar</button>
                     
                         </form>
@@ -77,7 +84,9 @@
 
     <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-storage.js"></script>
     <script type="text/javascript" src = "{{ url_for('static', filename = 'js/load_data_reg_diploma.js') }}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/uploadDiploma.js') }}"></script>
     <script type="text/javascript" src = "{{ url_for('static', filename = 'js/animation.js') }}"></script>
     
 </body>
