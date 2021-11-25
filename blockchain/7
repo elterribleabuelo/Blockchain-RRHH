@@ -1,0 +1,15 @@
+{
+    "nombres": "Renzo Alexis",
+    "ap_paterno": "Guerrero ",
+    "ap_materno": "Huayta",
+    "dni": 73176898,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 18,
+    "institucion": "CTIC",
+    "condicion": "APROBADO",
+    "prev_block": {
+        "hash": "75ef0509f72887a0c02533fdbd3b9cc5",
+        "filename": "6"
+    }
+}

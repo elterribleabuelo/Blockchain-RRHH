@@ -1,0 +1,15 @@
+{
+    "nombres": "Maria Fernanda",
+    "ap_paterno": "Irigoin",
+    "ap_materno": "Cardenas",
+    "dni": 83214531,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 17,
+    "institucion": "CTIC UNI",
+    "condicion": "APROBADO",
+    "prev_block": {
+        "hash": "fa2e6e3ea99362f749400fc32f1b9866",
+        "filename": "11"
+    }
+}

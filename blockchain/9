@@ -1,0 +1,15 @@
+{
+    "nombres": "Maria Fernanda",
+    "ap_paterno": "Irigoin",
+    "ap_materno": "Cardenas",
+    "dni": 83214531,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 18,
+    "institucion": "UNI",
+    "condicion": "APROBADO",
+    "prev_block": {
+        "hash": "1dddf2393cc8acb305bbaccec8b7bc98",
+        "filename": "8"
+    }
+}

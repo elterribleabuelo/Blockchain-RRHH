@@ -44,6 +44,7 @@ def registrar_diploma():
         nota = request.form.get('nota') # Va a la Blockchain
         institucion = request.form.get('institucion') # Va a la Blockchain
         
+        
         ### Obtenemos algunas variables más necesarias para el diploma ###
         ### Consultando Firebase ###
         #### Tabla alumnos ####

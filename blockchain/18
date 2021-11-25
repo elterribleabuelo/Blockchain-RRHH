@@ -3,13 +3,13 @@
     "ap_paterno": "Guerrero ",
     "ap_materno": "Huayta",
     "dni": 73176898,
-    "curso": "Java Intermedio",
-    "fecha_inicio_fin": "11/25/2021-11/30/2021",
-    "nota": 17,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 15,
     "institucion": "SISTEMAS UNI",
     "condicion": "APROBADO",
     "prev_block": {
-        "hash": "4fd74c101a6cef7ef313ed6106df810c",
-        "filename": "2"
+        "hash": "c5179e0a5a43cd2b05d677457a0476a1",
+        "filename": "17"
     }
 }
