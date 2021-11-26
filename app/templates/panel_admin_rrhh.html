@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="css/centro.css">
+    <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
+    <title>RRHH</title>
+</head>
+<body>
+   <input type="checkbox" id = "check">
+    <!--header area start-->
+    <header>
+        <label for = "check">
+            <i class = "fas fa-bars" id = "sidebar_btn"></i>
+        </label>
+        <div class = "left_area">
+            <h3>Blockchain <span>Diplomas</span></h3>
+        </div>
+
+        <div class = "right_area">
+
+            <a href="/" class = "logout_btn">Cerrar sesión</a>
+        
+        </div>
+    </header> 
+    <!--header area end--> 
+
+    <!--sidebar start-->
+    <div class="sidebar">
+        <center>
+            <img src="img/logo.jpg" class = "profile_image" alt="">
+        </center>
+        <!--<a href="#"><i class="fas fa-robot"></i><span>Cursos</span></a>-->
+        <li ><a href="#"><i class="icono izquierda fas fa-users"></i><span>Buscar</span> <i class = "icono derecha fa fa-chevron-down"></i> </a>
+            <ul>
+                <li><a href="/buscar_dni">DNI</a></li>
+                <li><a href="/buscar_documento">Documento</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="icono izquierda fas fa-book"></i><span>Diplomas</span></a></li>
+        <li><a href="#"><i class="icono izquierda fas fa-cubes"></i><span>About</span></a></li>
+    </div>
+
+    <!--sidebar end-->
+
+    <div class = "content">
+        
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src = "js/menu.js"></script>
+</body>
+</html>

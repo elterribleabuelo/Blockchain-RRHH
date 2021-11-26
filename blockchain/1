@@ -4,10 +4,11 @@
     "ap_materno" : "Huayta",
     "dni" : 73176898,
     "curso": "Python",
-    "fecha_inicio_fin" :"11/30/2021-12/11/2021",
-    "nota":15, 
-    "institucion":"Sistemas UNI",
-    "condicion":"APROBADO", 
+    "fecha_inicio_fin" : "11/30/2021-12/11/2021",
+    "nota" : 15, 
+    "institucion" : "Sistemas UNI",
+    "condicion" : "APROBADO",
+    "link" : "",
     "prev_block" : {
         "hash" : "",
         "filename" : ""

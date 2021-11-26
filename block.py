@@ -1,9 +1,15 @@
 import json 
 import os
 import hashlib 
+import pyrebase
+import firebase_configuration
+
 
 BLOCKCHAIN_DIR = 'blockchain/'
 
+## Firebase initiation 
+# firebase = pyrebase.initialize_app(firebase_configuration.FIREBASE_CONFIG) 
+# db = firebase.database()
 
 def get_hash(prev_block): 
     with open(BLOCKCHAIN_DIR + prev_block, 'rb') as f:
@@ -33,6 +39,7 @@ def check_integrity():
         nota = int(block.get('nota'))
         institucion = block.get('institucion')
         condicion = block.get('condicion')
+        link = block.get('link')
         
         ######################## HASH del bloque anterior #################################
         ####Bloque actual = 8 ####
@@ -59,7 +66,7 @@ def check_integrity():
         results.append({'block' : int(prev_filename) + 1,'estado': estado, 
                         'nombres':nombres, 'ap_paterno' : ap_paterno,'ap_materno': ap_materno,
                         'dni' : dni,'curso': curso, 'fecha_inicio_fin':fecha_inicio_fin, 'nota' : nota,'institucion': institucion,
-                        'condicion': condicion}) # Aca deben viajar las variables
+                        'condicion': condicion,'link' : link}) # Aca deben viajar las variables
 
     return results 
 
@@ -85,7 +92,7 @@ def read_blockchain(num_registro):
 
 
 
-def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,nota,institucion,condicion):
+def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,nota,institucion,condicion,link):
 
     blocks_count = len(os.listdir(BLOCKCHAIN_DIR)) # numero de registros del blockchain
     prev_block = str(blocks_count) # int a str
@@ -100,6 +107,7 @@ def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,not
         "nota" : int(nota),
         "institucion" : institucion,
         "condicion" : condicion,
+        "link": link,
         "prev_block":{
             "hash" : get_hash(prev_block),
             "filename" : prev_block

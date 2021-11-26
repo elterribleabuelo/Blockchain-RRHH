@@ -1,15 +1,16 @@
 {
-    "nombres": "Renzo Alexis",
-    "ap_paterno": "Guerrero ",
+    "nombres": "Renzo",
+    "ap_paterno": "Guerrero",
     "ap_materno": "Huayta",
-    "dni": 73176898,
+    "dni": 45678912,
     "curso": "Java Intermedio",
     "fecha_inicio_fin": "11/25/2021-11/30/2021",
-    "nota": 17,
-    "institucion": "SISTEMAS UNI",
-    "condicion": "APROBADO",
+    "nota": 13,
+    "institucion": "UNI",
+    "condicion": "DESAPROBADO",
+    "link": "",
     "prev_block": {
-        "hash": "4fd74c101a6cef7ef313ed6106df810c",
+        "hash": "10792ac0a0c62b8191ddfe93eaf01453",
         "filename": "2"
     }
 }

@@ -43,7 +43,10 @@ def registrar_diploma():
         nomb_curso = request.form.get('nomb_curso') # Va a la Blockchain
         nota = request.form.get('nota') # Va a la Blockchain
         institucion = request.form.get('institucion') # Va a la Blockchain
-        
+        try:
+            link = request.form.get('link')
+        except:
+            link = ""
         
         ### Obtenemos algunas variables más necesarias para el diploma ###
         ### Consultando Firebase ###
@@ -68,7 +71,8 @@ def registrar_diploma():
         if (int(nota) > 14):
             condicion = "APROBADO" # Va a la Blockchain
         else:
-            condicion = "DESAPROBADO"
+            condicion = "DESAPROBADO" 
+        
 
         ### Tabla alumnos-cursos ###
         alumno_curso_ref =  db.child("proyecto/alumnos_cursos").child(dni)
@@ -88,7 +92,7 @@ def registrar_diploma():
         
         write_block(dni = dni, nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno,
                     curso = nomb_curso , fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
-                    institucion = institucion, condicion = condicion
+                    institucion = institucion, condicion = condicion, link = link
                     )
 
     return render_template('registrar_diploma.html') 
@@ -218,7 +222,27 @@ def registrar_curso():
     return render_template('registrar_curso.html')
 
 
-### Ruta para registrar alumnos en cursos existentes
+### Ruta para registrar alumnos en cursos existentes 
+
+### Ruta del panel de los reclutadores de RRHH 
+@app.route('/panel_admin_rrhh')
+def panel_admin_rrhh(): 
+    return render_template('panel_admin_rrhh.html')
+
+### Ruta para la busqueda por DNI
+@app.route('/buscar_dni')
+def buscar_dni(): 
+    ### Llamar aquí los registros de la Blockchain 
+    columns = [] # Campos o claves de la Blockchain
+    items = []   # Registros que estan en la Blockchain
+    
+    ### https://www.it-swarm-es.com/es/python/tabla-dinamica-con-python/805667024/
+    return render_template('buscar_dni.html')
+
+### Ruta para la busqueda por Documento
+@app.route('/buscar_documento')
+def buscar_documento(): 
+    return render_template('buscar_documento.html')
 
 if __name__ == '__main__': 
     app.run(debug = True, port = 4000)

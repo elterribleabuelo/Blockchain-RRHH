@@ -80,7 +80,7 @@ $imagen_diploma.addEventListener('change',function(){
                     const imageElement = document.querySelector('#imagen_diploma');
                     imageElement.src = url;
                     // Añadimos el valor al value del elemento del HTML 
-                    document.getElementById('subida_diploma').value = url;
+                    document.getElementById('link').value = url;
                 })
             }
 

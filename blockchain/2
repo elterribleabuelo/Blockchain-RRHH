@@ -1,15 +1,16 @@
 {
-    "nombres": "Monica",
-    "ap_paterno": "Huayta",
-    "ap_materno": "Rodriguez",
-    "dni": 8563113,
-    "curso": "Java Intermedio",
-    "fecha_inicio_fin": "12/23/2021-12/30/2021",
-    "nota": 16,
-    "institucion": "CTIC UNI",
+    "nombres": "Maria Fernanda",
+    "ap_paterno": "Irigoin",
+    "ap_materno": "Cardenas",
+    "dni": 83214531,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 19,
+    "institucion": "UNI",
     "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Thu%20Nov%2025%202021%2017%3A13%3A09%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-ejemplo_diploma_01.jpg?alt=media&token=33dbda3e-8852-4208-8e59-c15763609d16",
     "prev_block": {
-        "hash": "bde5a2af8e7475d4c0df024d2a6b6b53",
+        "hash": "96bb1a9dbbc807ef5981eb193ad03e2a",
         "filename": "1"
     }
 }

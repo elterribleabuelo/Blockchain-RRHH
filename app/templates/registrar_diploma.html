@@ -65,7 +65,8 @@
                                 <input type="text" class="form-control" id="institucion" aria-describedby="basic-addon3" name = "institucion">
                             </div>
 
-                            <label for="institucion" class="form-label" id = "subida_diploma">Subir diploma</label>
+                            <label for="institucion" class="form-label" id = "subida_diploma" name = "subida_diploma">Subir diploma</label>
+                            <input type = "hidden" id = "link" name = "link">
                             <div class="input-group mb-3">
                                 <input type="file" class="form-control" id = "imagen_diploma" aria-describedby="basic-addon3" name = "imagen_diploma">
                             </div> 
@@ -107,8 +108,9 @@
                             
                             <!--Condicion : Aprobado o Desaprobado-->
                             <!--onclick = "uploadImage()-->
-                            <button class = "btn btn-primary">Registrar</button>
-                    
+                            <center>
+                                <button class = "btn btn-primary">Registrar</button>
+                            </center>
                         </form>
                 </div>
             </div>
