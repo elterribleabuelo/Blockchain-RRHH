@@ -8,7 +8,11 @@ import firebase_configuration
 import pyrebase
 import json
 import hashlib
+import os
 
+
+BLOCKCHAIN_DIR = 'blockchain/' 
+#os.chdir(BLOCKCHAIN_DIR) 
 
 # Inicializando la app
 app = Flask(__name__,static_url_path = '',
@@ -23,7 +27,7 @@ db = firebase.database()
 ###### Definimos las rutas del proyecto ######
 
 ### Ruta del login
-@app.route('/')
+@app.route('/login')
 def inicio(): 
     return render_template('login.html')
 
@@ -233,11 +237,25 @@ def panel_admin_rrhh():
 @app.route('/buscar_dni')
 def buscar_dni(): 
     ### Llamar aquí los registros de la Blockchain 
-    columns = [] # Campos o claves de la Blockchain
+    # columns = [] # Campos o claves de la Blockchain
     items = []   # Registros que estan en la Blockchain
+    registros = os.listdir("./blockchain")
+    print("REGISTROS:",registros)
+    num_registros = len(registros)
+    print("HOLAAAAAAAAAAAA:", num_registros)
+    for i in range(1,num_registros):
+        with open("./blockchain/" + str(i+1)) as f:
+            block = json.load(f)
+            items.append(block)
+            #print(f"Bloque {i + 1} ",block)
+            print("\n")
     
+    print(items)
+    print("\n")
+    print(items[0])
+    print(items[0]['nombres'])
     ### https://www.it-swarm-es.com/es/python/tabla-dinamica-con-python/805667024/
-    return render_template('buscar_dni.html')
+    return render_template('buscar_dni.html', checking_results = items)
 
 ### Ruta para la busqueda por Documento
 @app.route('/buscar_documento')

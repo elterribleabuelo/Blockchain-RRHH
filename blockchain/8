@@ -1,0 +1,16 @@
+{
+    "nombres": "Maria Fernanda",
+    "ap_paterno": "Irigoin",
+    "ap_materno": "Cardenas",
+    "dni": 83214531,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 14,
+    "institucion": "UNI",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Nov%2026%202021%2018%3A54%3A45%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-ejemplo_diploma_02.jpg?alt=media&token=08648e1a-6843-4e5c-97ab-4b19960bdea3",
+    "prev_block": {
+        "hash": "37f6226603b943c6eb40eb09c2d41cd6",
+        "filename": "7"
+    }
+}

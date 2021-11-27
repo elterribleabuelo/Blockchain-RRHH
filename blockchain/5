@@ -1,0 +1,16 @@
+{
+    "nombres": "Renzo",
+    "ap_paterno": "Guerrero",
+    "ap_materno": "Huayta",
+    "dni": 45678912,
+    "curso": "Java Intermedio",
+    "fecha_inicio_fin": "11/25/2021-11/30/2021",
+    "nota": 15,
+    "institucion": "UNMSM",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Nov%2026%202021%2018%3A31%3A05%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-ejemplo_diploma_04.jpg?alt=media&token=390a10ab-b0cf-4940-8a25-ce0234421918",
+    "prev_block": {
+        "hash": "32cdb28c07d87c33e304cd40aae6997c",
+        "filename": "4"
+    }
+}

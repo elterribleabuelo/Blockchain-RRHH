@@ -11,10 +11,11 @@
         table.dataTable thead, table.dataTable tfoot{
             background-color: hsl(217, 71%, 53%);
         }
-        .table thead th, .table tfoot th{
+        .table thead th, .table tfoot td{
             color: hsl(0, 0%, 100%);
         }
     </style>
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
     <title>Buscar DNI</title>
   </head>
   <body>
@@ -29,7 +30,7 @@
         </div>
 
         <div class = "right_area">
-            <a href="/" class = "logout_btn">Cerrar sesión</a>
+            <a href="/login" class = "logout_btn">Cerrar sesión</a>
         </div>
     </header> 
     <!--header area end-->
@@ -41,29 +42,42 @@
                     <th>Nombres</th>
                     <th>Ap.Paterno</th>
                     <th>Ap.Materno</th>
+                    <th>DNI</th>
                     <th>Curso</th>
                     <th>Nota</th>
                     <th>Institucion</th>
+                    <th>Certificado</th>
                 </tr>
             </thead>
             <tbody>
-                <!--<tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>-->
+                {% for item in checking_results  %}
+                    <tr>
+                    
+                        <td>{{item['nombres']}}</td>  
+                        <td>{{item['ap_paterno']}}</td>
+                        <td>{{item['ap_materno']}}</td>
+                        <td>{{item['dni']}}</td>
+                        <td>{{item['curso']}}</td>
+                        <td>{{item['nota']}}</td>
+                        <td>{{item['institucion']}}</td>
+                        {%if item['link'] != '' %}
+                            <td><center><a href={{item['link']}}><i class="fas fa-book"></i></a></center></td> 
+                        {% else %}
+                            <td><center><a href="#" class = "sinDiploma"><i class="fas fa-times"></i></a></center></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
             </tbody>
             <tfoot>
                 <tr>
                     <td>Nombres</td>
                     <td>Ap.Paterno</td>
                     <td>Ap.Materno</td>
+                     <td>DNI</td>
                     <td>Curso</td>
                     <td>Nota</td>
                     <td>Institucion</td>
+                    <td>Certificado</td>
                 </tr>
             </tfoot>
         </table>
@@ -73,11 +87,6 @@
     <script src = "https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src = "https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src = "https://cdn.datatables.net/1.11.3/js/dataTables.bulma.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
-    </script>
-
+    <script src = "js/datatables.js"></script>
   </body>
 </html>

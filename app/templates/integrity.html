@@ -7,6 +7,8 @@
     <!-- CSS only -->
     <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/estilos.css') }}" >
     <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
     <title>Integridad de la Blockchain</title>
 </head>
@@ -42,37 +44,44 @@
         <div class = "content">
             {% for res in checking_results %} 
 
-                {% if res['estado'] == 0 %} 
+                {% if res['estado'] == 0 %}
 
-                    <div class = "caja_ok">
-                        <p style="text-align:center"><i class="fas fa-check"></i></p>
-                        <span> Bloque : {{res['block']}}</span>
-                        <p style="text-align:center">Nombres:{{ res['nombres'] }}</p>
-                        <p style="text-align:center">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
-                        <p style="text-align:center">DNI:{{ res['dni'] }}</p>
-                        <p style="text-align:center">CURSO:{{ res['curso'] }}</p>
-                        <p style="text-align:center">Fechas:{{ res['fecha_inicio_fin'] }}</p>
-                        <p style="text-align:center">NOTA:{{ res['nota'] }}</p>
-                        <p style="text-align:center">Institucion:{{ res['institucion'] }}</p>
-                        <p style="text-align:center">Condición:{{ res['condicion'] }}</p>
-                    </div>
-
+                    
+                        <div class = "card text-white bg-primary mb-3" style="max-height:22rem; max-width: 30rem; width:  350px;height: 400px; float: right;right: -70%;margin-right: 600px;">
+                            <div class="card-header">Bloque:{{res['block']}}<p align = "right"><i class="fas fa-check"></i></p></div>
+                            <div class="card-body">
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Nombres:{{ res['nombres'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">DNI:{{ res['dni'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">CURSO:{{ res['curso'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Fechas:{{ res['fecha_inicio_fin'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">NOTA:{{ res['nota'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Institucion:{{ res['institucion'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Condición:{{ res['condicion'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Hash:{{ res['hash'] }}</p>
+                            </div>
+                        </div>
+                    
                     <!--Block {{ res['block'] }} : {{ res['result'] }} : {{ res['dni'] }}-->
 
                 {% elif res['estado'] == 1 %} 
 
-                    <div class = "caja_corrupta">
-                        <p style="text-align:center"><i class="fas fa-times"></i></p>
-                        <span> Bloque : {{res['block']}}</span>
-                        <p style="text-align:center">Nombres:{{ res['nombres'] }}</p>
-                        <p style="text-align:center">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }}</p>
-                        <p style="text-align:center">DNI:{{ res['dni'] }}</p>
-                        <p style="text-align:center">CURSO:{{ res['curso'] }}</p>
-                        <!--<p style="text-align:center">Fechas:{{ res['fecha_inicio_fin'] }}</p> -->
-                        <p style="text-align:center">NOTA:{{ res['nota'] }}</p>
-                        <p style="text-align:center">Institucion:{{ res['institucion'] }}</p>
-                        <p style="text-align:center">Condición:{{ res['condicion'] }}</p>
-                    </div>
+                    
+                        <div class = "card text-white bg-secondary mb-3" style="max-height:22rem; max-width: 30rem;width:350px;height: 400px; float: right;right: -70%;margin-right: 600px;">
+                            <div class = "card-header">Bloque:{{res['block']}}<p style="align:right"><i class="fas fa-times"></i></p></div>
+                            <div class = "card-body text-info">
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Nombres:{{ res['nombres'] }}</p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">DNI:{{ res['dni'] }}</p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">CURSO:{{ res['curso'] }}</p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Fechas:{{ res['fecha_inicio_fin'] }}</p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">NOTA:{{ res['nota'] }}</p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Institucion:{{ res['institucion'] }}</p>
+                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Condición:{{ res['condicion'] }}</p>
+                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Hash:{{ res['hash'] }}</p>
+                            </div>
+                        </div>
+                    
 
                     <!--Block {{ res['block'] }} : {{ res['result'] }} : {{ res['condicion'] }}-->
                 

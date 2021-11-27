@@ -41,6 +41,7 @@ def check_integrity():
         condicion = block.get('condicion')
         link = block.get('link')
         
+        
         ######################## HASH del bloque anterior #################################
         ####Bloque actual = 8 ####
         ##### Por ejemplo: Bloque 8-1 = 7 (bloque anterior) ######
@@ -66,7 +67,7 @@ def check_integrity():
         results.append({'block' : int(prev_filename) + 1,'estado': estado, 
                         'nombres':nombres, 'ap_paterno' : ap_paterno,'ap_materno': ap_materno,
                         'dni' : dni,'curso': curso, 'fecha_inicio_fin':fecha_inicio_fin, 'nota' : nota,'institucion': institucion,
-                        'condicion': condicion,'link' : link}) # Aca deben viajar las variables
+                        'condicion': condicion,'link' : link,'hash' : prev_hash}) # Aca deben viajar las variables
 
     return results 
 

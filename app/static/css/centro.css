@@ -11,6 +11,10 @@ header{
     padding: 20px; 
     width: 100%;
     height: 70px; 
+    left: 0;
+    top:0;
+    right: 0;
+    z-index: 1;
 
 }
 
@@ -168,5 +172,8 @@ label #sidebar_btn:hover{
     padding: 150px !important;
 }
 
+.sinDiploma{
+    color: #22242A;
+}
 
 

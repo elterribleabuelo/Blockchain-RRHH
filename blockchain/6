@@ -1,0 +1,16 @@
+{
+    "nombres": "Camila",
+    "ap_paterno": "Tenorio",
+    "ap_materno": "Bazan",
+    "dni": 92184567,
+    "curso": "Python Básico",
+    "fecha_inicio_fin": "11/24/2021-12/16/2021",
+    "nota": 18,
+    "institucion": "CTIC",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Nov%2026%202021%2018%3A52%3A04%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-background.jpg?alt=media&token=c345d152-7c1d-477c-803b-51e71f90133b",
+    "prev_block": {
+        "hash": "46c824cc4e841cd2ce2f342d63ac6eda",
+        "filename": "5"
+    }
+}
