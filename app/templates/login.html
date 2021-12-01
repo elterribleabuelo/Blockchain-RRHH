@@ -7,8 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/login.css') }}" >
-
+    <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/login.css') }}">
 </head>
 <body>
 
@@ -37,47 +36,51 @@
                     <div class = "is-size-4 has-text-centered">Login</div>
 
                 </div>
-
                 <div class="content">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" placeholder="Usuario" id = "usuario" name = "usuario">
-                            <span class="icon is-small is-left">
-                                <span class="material-icons">Usuario</span>
-                            </span>
-                            <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Contraseña" id = "contrasena" name = "contrasena">
-                            <span class="icon is-small is-left">
-                                <span class="material-icons">Contraseña</span>
-                            </span>
-                        </p>
-                    </div>
+                    <form id = "form-autenticacion">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="text" placeholder = "Email" id = "email" name = "email">
+                                <span class="icon is-small is-left">
+                                    <span class="material-icons">Usuario</span>
+                                </span>
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="password" placeholder = "Clave" id = "password" name = "password">
+                                <span class="icon is-small is-left">
+                                    <span class="material-icons"></span>
+                                </span>
+                            </p>
+                        </div>
 
-                    <div class="field">
-                        <label class="label">
-                            <input type="checkbox" class="checkbox">
-                            Recordar
-                        </label>
-                    </div>
+                        <div class="field">
+                            <label class="label">
+                                <input type="checkbox" class="checkbox">
+                                Recordar
+                            </label>
+                        </div>
 
-                    <div class="field">
-                        <p class="control" style="text-align:center">
-                            <button class="button is-info" type="submit" onclick=" location.href = '/panel_admin_centro'"  >Ingresar</button>
-                        </p>
-                    </div>
+                        <div class="field">
+                            <p class="control" style="text-align:center">
+                                <button class="button is-info" type="submit" >Ingresar</button>
+                            </p>
+                        </div>
+                    </form>
                 </div>
+                    
 
             </div>
 
          </div>
     
     </div>
-    
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src = "js/authentication.js"></script>
 </body>
 </html>
