@@ -40,6 +40,8 @@ var firebaseConfig = {
 let $imagen_diploma = document.getElementById('imagen_diploma');
 // let $subida_diploma = document.getElementById('subida_diploma');
 
+// Funciones
+
 $imagen_diploma.addEventListener('change',function(){ 
 
     var myModal = new bootstrap.Modal(document.getElementById('ventana_modal'), {
@@ -49,14 +51,37 @@ $imagen_diploma.addEventListener('change',function(){
     myModal.show();
 
     var vtn_modal = document.getElementsByClassName("modal");
-    //console.log("HOLAAAAAAAAAAA");
     vtn_modal[0].addEventListener('click',function(event){
         //console.log("ESTOY AQUIIIIIIII");
         if(event.target.value == "yes"){
-            //console.log("YESSSSSSSSSSSSSSSSSSSS");
+            
             const ref = firebase.storage().ref();
             //console.log(ref);
             const file = document.querySelector('#imagen_diploma').files[0];
+
+            var fileReader = new FileReader();
+
+            fileReader.onload = function(FileLoadEvent){
+                var srcData = FileLoadEvent.target.result;
+                //console.log(srcData);
+                var base64result = srcData.split(',')[1];
+                console.log("Base 64:",base64result); // Hasta acá son iguales
+
+                // Encriptamos la base64 con sha256
+                var encrypted = CryptoJS.SHA256(base64result);
+                console.log("SHA256:",encrypted);
+                // Hash con el que se compara en la Blockchain
+                //encrypted = encrypted.toHex;
+                //document.getElementById('hash').value = encrypted;
+                //console.log("HASH:",encrypted);
+
+                // Añadimos el valor al value del elemento oculto del HTML
+                document.getElementById('hash').value = base64result;
+                console.log("HASH FINAL BASE 64:",base64result);
+            }
+
+            fileReader.readAsDataURL(file);
+
             //console.log(file);
             const name = new Date() + '-' + file.name;
             //console.log(name);
@@ -74,13 +99,22 @@ $imagen_diploma.addEventListener('change',function(){
                 task.
                 then(snapshot => snapshot.ref.getDownloadURL()) // snapshot.ref.getDownloadURL(): obtiene la url de la imagen
                 .then (url =>{
-                    console.log(url); // url de forma explicita
+
+                    console.log("URL:", url); // url de forma explicita
+                    
+                    const fileUrl = url; // URL del cliente - imagen local del equipo
+                    console.log(fileUrl);
+                    //var encrypted = CryptoJS.SHA256(fileUrl); // cadena url
+
+                    //encrypted = encrypted.toString();
+                    //console.log("HASH:",encrypted.toString());
 
                     // Asignamos la imagen al elemento
                     const imageElement = document.querySelector('#imagen_diploma');
                     imageElement.src = url;
+                    
                     // Añadimos el valor al value del elemento del HTML 
-                    document.getElementById('link').value = url;
+                    document.getElementById('link').value = link;
                 })
             }
 
@@ -93,7 +127,6 @@ $imagen_diploma.addEventListener('change',function(){
         else if(event.target.value == "no"){
             myModal.hide();
         }
-
     });
     
 });

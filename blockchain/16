@@ -1,0 +1,16 @@
+{
+    "nombres": "Ursula",
+    "ap_paterno": "Campos",
+    "ap_materno": "Rodriguez",
+    "dni": 45321734,
+    "curso": "Java Intermedio",
+    "fecha_inicio_fin": "11/25/2021-11/30/2021",
+    "nota": 15,
+    "institucion": "CEPS",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Wed%20Dec%2001%202021%2023%3A47%3A34%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-background.jpg?alt=media&token=2c50afc1-3a33-4ba1-ba58-73960e8f5748",
+    "prev_block": {
+        "hash": "022cb97b98264f135af3e9db93f3c4ef",
+        "filename": "15"
+    }
+}

@@ -14,8 +14,8 @@ body{
 
 .drop-area{
     border: 5px dashed #ddd;
-    height : 500px;
-    width : 700px;
+    height : 300px;
+    width : 400px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@ body{
 }
 
 .drop-area.active{
-    background-color: hsl(214, 56%, 30%);
+    background-color: #5256ad;
     color:black;
     border:2px dashed #618ac9;
 }
@@ -63,6 +63,7 @@ body{
 
 #preview{
     margin-top:10px;
+    padding: 20px;
 }
 
 .status-text{
