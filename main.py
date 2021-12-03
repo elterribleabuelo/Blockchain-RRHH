@@ -259,8 +259,27 @@ def buscar_dni():
 
 ### Ruta para la busqueda por Documento
 @app.route('/buscar_documento')
-def buscar_documento(): 
-    return render_template('buscar_documento.html')
+def buscar_documento():
+    items = []   # Registros que estan en la Blockchain
+    registros = os.listdir("./blockchain")
+    num_registros = len(registros)
+    for i in range(1,num_registros):
+        with open("./blockchain/" + str(i+1)) as f:
+            block = json.load(f)
+            items.append(block)
+            
+    return render_template('buscar_documento.html', checking_results = items)
+
+### Ruta para obtener los resultados de la búsqueda
+@app.route('/buscar_documento_resultado')
+def buscar_documento_resultado():
+    """
+    Extraemos los regitros de la blockchain para comparar el hash de las imágenes con el hash de las
+    imágenes subidas
+    """
+    items = [] # Registros  que están en la Blockchain
+    
+    return render_template('buscar_documento_resultado.html',checking_results = items)
 
 if __name__ == '__main__': 
     app.run(debug = True, port = 4000)

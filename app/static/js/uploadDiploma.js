@@ -82,13 +82,8 @@ $imagen_diploma.addEventListener('change',function(){
 
                 // Hexadecimal a SHA256
                 var encrypted = CryptoJS.SHA256(hexString);
-                encrypted = encrypted.toString();
-                // console.log("SHA256:",encrypted);
-                // Hash con el que se compara en la Blockchain
-                //encrypted = encrypted.toHex;
-                //document.getElementById('hash').value = encrypted;
-                //console.log("HASH:",encrypted);
-
+                encrypted = encrypted.toString();  // Hash con el que se compara en la Blockchain
+                
                 // Añadimos el valor al value del elemento oculto del HTML
                 document.getElementById('hash').value = base64result;
                 console.log("SHA 256:",encrypted);
@@ -118,11 +113,8 @@ $imagen_diploma.addEventListener('change',function(){
                     
                     const fileUrl = url; // URL del cliente - imagen local del equipo
                     console.log(fileUrl);
-                    //var encrypted = CryptoJS.SHA256(fileUrl); // cadena url
-
-                    //encrypted = encrypted.toString();
-                    //console.log("HASH:",encrypted.toString());
-
+                    
+                    
                     // Asignamos la imagen al elemento
                     const imageElement = document.querySelector('#imagen_diploma');
                     imageElement.src = url;

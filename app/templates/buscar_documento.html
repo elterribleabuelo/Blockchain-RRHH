@@ -38,13 +38,29 @@
         <input type = "file" name = "" id = "input-file" hidden multiple />
     </div>
 
-    <div id = "preview">
-      <center><button type="button" class="btn btn-success" id = "buscar" style = "margin-top:10px;">Buscar</button></center>
+    <div id = "preview"></div>
+
+    <div>
+      <center><button type="button" class="btn btn-success" id = "buscar" name = "buscar" style = "margin-top:10px;">Buscar</button></center>
     </div>
 
-    <script src = "js/drag_and_drop.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+    <script src = "js/drag_and_drop.js"></script>
+    <script>
+      var someJavaScriptVar = {{checking_results|tojson|safe}};
+      var items_json = someJavaScriptVar;
+      //console.log("JSON:", items_json.length);
+      /*for (var i = 0; i < items_json.length; i++){
+        console.log("Desde HMTL:",items_json[i]['nombres']);
+      }*/
+       // https://es.stackoverflow.com/questions/321415/pasar-datos-del-backend-a-js
+       // https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787
+       // https://stackoverflow.com/questions/39077534/how-to-decode-39-in-flask-with-jinja2-template
+       // https://es.stackoverflow.com/questions/39525/como-obtener-length-de-un-json
+       // https://www.it-swarm-es.com/es/javascript/como-puedo-pasar-datos-de-flask-javascript-en-una-plantilla/1068454066/
+    </script>
+  </script>
   </body>
 </html>
