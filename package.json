@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "browserify": "^17.0.0",
+    "buffer": "^6.0.3",
     "firebase": "^9.5.0",
     "sha256-file": "^1.0.0"
   }

@@ -72,31 +72,16 @@ function showFiles(files){
 
 }
 
-function sign_string(key_b64, to_sign) {
-    try {
-        var key = CryptoJS.enc.Base64.parse(key_b64).toString(CryptoJS.enc.Utf8);
+function base64ToHex(str) {
+    const raw = window.atob(str);
+    let result = '';
+    for (let i = 0; i < raw.length; i++) {
+      const hex = raw.charCodeAt(i).toString(16);
+      result += (hex.length === 2 ? hex : '0' + hex);
     }
-    catch {
-        var key = CryptoJS.enc.Hex.parse(toHex(atob(key_b64)));
-    }
-    var hash = CryptoJS.HmacSHA256(to_sign, key);
-    var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
-
-    return hashInBase64;
-    // document.write(hashInBase64 + '<br>');
+    return result.toUpperCase();
 }
-
-function toHex(str) {
-    var result = '';
-    for (var i=0; i<str.length; i++) {
-      if (str.charCodeAt(i).toString(16).length === 1) {
-        result += '0' + str.charCodeAt(i).toString(16);
-      } else {
-        result += str.charCodeAt(i).toString(16);
-      }
-    }
-    return result;
-}
+  
 
 function processFile(file){
     /*Procesar imágenes */
@@ -116,9 +101,12 @@ function processFile(file){
 
             console.log("BASE64:",base64result); // Hasta acá son iguales
            
-            // Encriptamos la base64 con sha256
-            var encrypted = CryptoJS.SHA256(base64result);
-            console.log("SHA256:",encrypted);
+            // Base 64 a Hexadecimal
+            var hexString = base64ToHex(base64result);
+
+            // Hexadecimal a SHA256
+            var encrypted = CryptoJS.SHA256(hexString);
+            // console.log("SHA256:",encrypted);
             // Hash con el que se compara en la Blockchain
             encrypted = encrypted.toString();
             //console.log("HASH:",encrypted);
@@ -146,7 +134,7 @@ function processFile(file){
             const html = document.querySelector("#preview").innerHTML;
             document.querySelector("#preview").innerHTML = image + html;
             //console.log("URL local de la imagen:",fileUrl.split()[0]);
-            console.log("HASH FINAL BASE 64:", base64result);
+            console.log("SHA 256:", encrypted);
         });
 
         fileReader.readAsDataURL(file);

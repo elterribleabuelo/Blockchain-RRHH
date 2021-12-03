@@ -42,6 +42,16 @@ let $imagen_diploma = document.getElementById('imagen_diploma');
 
 // Funciones
 
+function base64ToHex(str) {
+    const raw = window.atob(str);
+    let result = '';
+    for (let i = 0; i < raw.length; i++) {
+      const hex = raw.charCodeAt(i).toString(16);
+      result += (hex.length === 2 ? hex : '0' + hex);
+    }
+    return result.toUpperCase();
+}
+
 $imagen_diploma.addEventListener('change',function(){ 
 
     var myModal = new bootstrap.Modal(document.getElementById('ventana_modal'), {
@@ -67,9 +77,13 @@ $imagen_diploma.addEventListener('change',function(){
                 var base64result = srcData.split(',')[1];
                 console.log("Base 64:",base64result); // Hasta acá son iguales
 
-                // Encriptamos la base64 con sha256
-                var encrypted = CryptoJS.SHA256(base64result);
-                console.log("SHA256:",encrypted);
+                // Base 64 a Hexadecimal
+                var hexString = base64ToHex(base64result);
+
+                // Hexadecimal a SHA256
+                var encrypted = CryptoJS.SHA256(hexString);
+                encrypted = encrypted.toString();
+                // console.log("SHA256:",encrypted);
                 // Hash con el que se compara en la Blockchain
                 //encrypted = encrypted.toHex;
                 //document.getElementById('hash').value = encrypted;
@@ -77,7 +91,7 @@ $imagen_diploma.addEventListener('change',function(){
 
                 // Añadimos el valor al value del elemento oculto del HTML
                 document.getElementById('hash').value = base64result;
-                console.log("HASH FINAL BASE 64:",base64result);
+                console.log("SHA 256:",encrypted);
             }
 
             fileReader.readAsDataURL(file);
