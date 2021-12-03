@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     const input = dropArea.querySelector("#input-file");
     var btn_buscar = document.getElementsByClassName("btn btn-success");
     let files;
+    var ids = [];
     
     // Eventos 
     
@@ -52,34 +53,42 @@ document.addEventListener("DOMContentLoaded", function(e) {
         e.preventDefault();
         files = e.dataTransfer.files;
         showFiles(files);
+
         // Haciendo visible el boton buscar
+        
         document.getElementById("buscar").style.visibility = "";
         
         /*Cuando hacemos click en el boton Buscar */
+        
         //btn_buscar = document.getElementsByClassName("btn btn-success");
-        console.log("BOTONCITO:",btn_buscar[0]);
+        
+        // console.log("BOTONCITO:",btn_buscar[0]);
+        
         //console.log("AQUI:",$btn_buscar);
         dropArea.classList.remove('active');
         dragText.textContent = "Arrastra y suelta las imágenes";
 
-        console.log("TIPO:",btn_buscar[0].type);
+        // console.log("TIPO:",btn_buscar[0].type);
     });
 
     btn_buscar[0].addEventListener('click', (e) => {
         e.preventDefault();
 
-        // Llamamos a los valores del Backend que vienen desde Python - Flask (/buscar_documento)
-        for (var i = 0; i < items_json.length; i++){
+        /* Llamamos a los valores del Backend que vienen desde Python - Flask (/buscar_documento) */
+
+        // Los datos que pasamos estan en forma de objeto de Javascript
+
+        // Guardamos la variable items_json con localStorage para poder recibirla y leerla en otra vista
+        localStorage.setItem('testObject', JSON.stringify(items_json));
+
+        // Guardamos los id de las imágenes los cuales son los valores del hash de la blockchain con localStorage
+        localStorage.setItem('testObjectID',JSON.stringify(ids));
+
+        /*for (var i = 0; i < items_json.length; i++){
             console.log("Desde JS:",items_json[i]['nombres']);
-        }
-
-        // Al hacer click debe redirigir a otra página donde se muestre el listado de personas que corresponde
-        // ese diploma
-
-        // Al hacer click enviar a flask los id = "${encrypted} de las imagenes para hacer la busqueda
-        // Nota: los hash de los documentos ya estan en la variable id = "${encrypted}"
-
+        }*/
         // console.log("CLICK");
+
     });
     
     
@@ -145,6 +154,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         </div>
                     </div>
                     `;
+                // Añadimos los id a la variable let ids 
+                ids.push(encrypted);
                 // Agregando los campos de la imagen en el HTML
                 const html = document.querySelector("#preview").innerHTML;
                 document.querySelector("#preview").innerHTML = image + html;
@@ -154,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     
             fileReader.readAsDataURL(file);
             uploadFile(file,id);
+
         }else{
             // NO ES UN ARCHIVO VÁLIDO
             alert("No es una archivo válido");
@@ -193,6 +205,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
 
 });
+
+
+
 
 
 

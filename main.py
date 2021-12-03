@@ -49,8 +49,10 @@ def registrar_diploma():
         institucion = request.form.get('institucion') # Va a la Blockchain
         try:
             link = request.form.get('link')
+            #hash_image = request.form.get('hash')
         except:
             link = ""
+            #hash_image = ""
         
         ### Obtenemos algunas variables más necesarias para el diploma ###
         ### Consultando Firebase ###
@@ -271,15 +273,9 @@ def buscar_documento():
     return render_template('buscar_documento.html', checking_results = items)
 
 ### Ruta para obtener los resultados de la búsqueda
-@app.route('/buscar_documento_resultado')
-def buscar_documento_resultado():
-    """
-    Extraemos los regitros de la blockchain para comparar el hash de las imágenes con el hash de las
-    imágenes subidas
-    """
-    items = [] # Registros  que están en la Blockchain
-    
-    return render_template('buscar_documento_resultado.html',checking_results = items)
+@app.route('/filtrado_CV')
+def filtrado_CV():    
+    return render_template('filtrado_CV.html')
 
 if __name__ == '__main__': 
     app.run(debug = True, port = 4000)

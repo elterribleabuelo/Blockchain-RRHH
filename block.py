@@ -40,6 +40,7 @@ def check_integrity():
         institucion = block.get('institucion')
         condicion = block.get('condicion')
         link = block.get('link')
+        # hash_image = block.get('hash_image')
         
         
         ######################## HASH del bloque anterior #################################
