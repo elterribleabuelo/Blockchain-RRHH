@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         showFiles(files);
 
         // Haciendo visible el boton buscar
-        
+
         document.getElementById("buscar").style.visibility = "";
         
         /*Cuando hacemos click en el boton Buscar */
@@ -80,9 +80,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         // Guardamos la variable items_json con localStorage para poder recibirla y leerla en otra vista
         localStorage.setItem('testObject', JSON.stringify(items_json));
-
+        
         // Guardamos los id de las imágenes los cuales son los valores del hash de la blockchain con localStorage
         localStorage.setItem('testObjectID',JSON.stringify(ids));
+
+        // Redirigiendo a la vista final 
+        setTimeout(()=> location.href = "/filtrado_CV",1000);
 
         /*for (var i = 0; i < items_json.length; i++){
             console.log("Desde JS:",items_json[i]['nombres']);
@@ -149,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         <div class = "status">
                             <span>${file.name}</span>
                             <span class = "status-text">
-                                Loading...
+                                Ok
                             </span>
                         </div>
                     </div>

@@ -85,7 +85,7 @@ $imagen_diploma.addEventListener('change',function(){
                 encrypted = encrypted.toString();  // Hash con el que se compara en la Blockchain
                 
                 // Añadimos el valor al value del elemento oculto del HTML
-                document.getElementById('hash').value = base64result;
+                document.getElementById("hash").value = encrypted;
                 console.log("SHA 256:",encrypted);
             }
 
@@ -120,8 +120,9 @@ $imagen_diploma.addEventListener('change',function(){
                     imageElement.src = url;
                     
                     // Añadimos el valor al value del elemento del HTML 
-                    document.getElementById('link').value = link;
+                    document.getElementById("link").value = url;
                 })
+                //document.getElementById("link").value = url;
             }
 
 

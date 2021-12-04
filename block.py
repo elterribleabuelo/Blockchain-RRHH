@@ -40,7 +40,7 @@ def check_integrity():
         institucion = block.get('institucion')
         condicion = block.get('condicion')
         link = block.get('link')
-        # hash_image = block.get('hash_image')
+        hash_image = block.get('hash_image')
         
         
         ######################## HASH del bloque anterior #################################
@@ -68,7 +68,7 @@ def check_integrity():
         results.append({'block' : int(prev_filename) + 1,'estado': estado, 
                         'nombres':nombres, 'ap_paterno' : ap_paterno,'ap_materno': ap_materno,
                         'dni' : dni,'curso': curso, 'fecha_inicio_fin':fecha_inicio_fin, 'nota' : nota,'institucion': institucion,
-                        'condicion': condicion,'link' : link,'hash' : prev_hash}) # Aca deben viajar las variables
+                        'condicion': condicion,'link' : link,'hash' : prev_hash, 'hash_image' : hash_image}) # Aca deben viajar las variables
 
     return results 
 
@@ -94,7 +94,7 @@ def read_blockchain(num_registro):
 
 
 
-def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,nota,institucion,condicion,link):
+def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,nota,institucion,condicion,link,hash_image):
 
     blocks_count = len(os.listdir(BLOCKCHAIN_DIR)) # numero de registros del blockchain
     prev_block = str(blocks_count) # int a str
@@ -110,6 +110,7 @@ def write_block(dni, nombres, ap_paterno, ap_materno,curso, fecha_inicio_fin,not
         "institucion" : institucion,
         "condicion" : condicion,
         "link": link,
+        "hash_image" : hash_image,
         "prev_block":{
             "hash" : get_hash(prev_block),
             "filename" : prev_block

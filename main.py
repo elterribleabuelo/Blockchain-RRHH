@@ -49,10 +49,13 @@ def registrar_diploma():
         institucion = request.form.get('institucion') # Va a la Blockchain
         try:
             link = request.form.get('link')
-            #hash_image = request.form.get('hash')
         except:
             link = ""
-            #hash_image = ""
+        
+        try:
+            hash_image = request.form.get('hash')
+        except:
+            hash_image = ""
         
         ### Obtenemos algunas variables más necesarias para el diploma ###
         ### Consultando Firebase ###
@@ -98,7 +101,7 @@ def registrar_diploma():
         
         write_block(dni = dni, nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno,
                     curso = nomb_curso , fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
-                    institucion = institucion, condicion = condicion, link = link
+                    institucion = institucion, condicion = condicion, link = link, hash_image = hash_image
                     )
 
     return render_template('registrar_diploma.html') 

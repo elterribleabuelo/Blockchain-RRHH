@@ -1,16 +1,17 @@
 {
-    "nombres": "Gabriel",
-    "ap_paterno": "Caceres",
-    "ap_materno": "Najar",
-    "dni": 88888888,
-    "curso": "Python IA",
-    "fecha_inicio_fin": "12/05/2021-12/26/2021",
-    "nota": 15,
+    "nombres": "Camila",
+    "ap_paterno": "Tenorio",
+    "ap_materno": "Bazan",
+    "dni": 92184567,
+    "curso": "Python Básico",
+    "fecha_inicio_fin": "11/24/2021-12/16/2021",
+    "nota": 16,
     "institucion": "CEPS",
     "condicion": "APROBADO",
-    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Nov%2026%202021%2018%3A52%3A38%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-blockchain.jpg?alt=media&token=b022facd-e768-4fa7-902e-cf8467af1b46",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Dec%2003%202021%2019%3A22%3A32%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-ejemplo_diploma_05.png?alt=media&token=03e51c45-18d8-423a-80e3-73d451a1f125",
+    "hash_image": "56a32dad6b7d4b71b98678c269a87c89f133b5b472cb84c4d5c410da57fc2c60",
     "prev_block": {
-        "hash": "22b945bd67ef32fe9fd0feab33fd0b1c",
+        "hash": "7af0e6166c4d33bb2a63d40db4b0ad9e",
         "filename": "6"
     }
 }

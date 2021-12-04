@@ -9,6 +9,7 @@
     "institucion" : "Sistemas UNI",
     "condicion" : "APROBADO",
     "link" : "",
+    "hash_image" : "",
     "prev_block" : {
         "hash" : "",
         "filename" : ""
