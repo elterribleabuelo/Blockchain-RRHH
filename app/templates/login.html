@@ -4,83 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <title>Iniciar sesión</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename = 'css/login.css') }}">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/login.css') }}">
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <div id = "background-image">
-    
-    </div>
-
-    <div id = "background-overlay">
-    
-    </div>
-
-    <div id = "background-pattern">
-    
-    </div>
-
-    <div id = "login-form-container">
-
-        <div class="card" style = "width: 400px;">
-            <div id="card-image">
-                <figure class="image">
-                    <img src = "img/logo.jpg" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class = "is-size-4 has-text-centered">Login</div>
-
-                </div>
-                <div class="content">
-                    <form id = "form-autenticacion">
-                        <div class="field">
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="text" placeholder = "Email" id = "email" name = "email">
-                                <span class="icon is-small is-left">
-                                    <span class="material-icons">Usuario</span>
-                                </span>
-                                <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder = "Clave" id = "password" name = "password">
-                                <span class="icon is-small is-left">
-                                    <span class="material-icons"></span>
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">
-                                <input type="checkbox" class="checkbox">
-                                Recordar
-                            </label>
-                        </div>
-
-                        <div class="field">
-                            <p class="control" style="text-align:center">
-                                <button class="button is-info" type="submit" >Ingresar</button>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-                    
-
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id = "elegir"></div>
+                <button type = "button" class = "toggle-btn" onclick = "login()">Iniciar sesión</button>
+                <button type = "button" class = "toggle-btn" onclick = "registrar()">Registrar</button>
             </div>
 
-         </div>
-    
+            <div class="redes-sociales">
+                <i class="fa fa-google"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+
+            <form action="submit" class="input-group" id = "login">
+                <input type="email" class = "input-field" placeholder = "Email" name = "email" id = "email" required>
+                <input type="password" class = "input-field" placeholder = "Contraseña" name = "password" id = "password" required>
+                <input type="checkbox" class = "check-box"><span>Recordar contraseña</span>
+                <button type = "submit" class = "submit-btn">Acceder</button>
+            </form>
+
+            <form action="submit" class="input-group" id = "registrar">
+                <input type="text" class = "input-field" placeholder = "Nombre de usuario" name = "nombUsuario" id = "nombUsuario"  required>
+                <input type="email" class = "input-field" placeholder = "Correo" name = "emailRegister" id = "emailRegister" required>
+                <input type="password" class = "input-field" placeholder = "Contraseña" name = "passwordRegister" id = "passwordRegister" required>
+                <input type="checkbox" class = "check-box"><span>Aceptar términos y condiciones</span>
+                <button type = "submit" class = "submit-btn">Acceder</button>
+            </form>
+
+
+        </div>
     </div>
+        
     <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
     <script src = "js/authentication.js"></script>
 </body>
 </html>

@@ -26,6 +26,13 @@ db = firebase.database()
 
 ###### Definimos las rutas del proyecto ######
 
+### Ruta del Home paage
+
+@app.route('/')
+def index(): 
+    return render_template('index.html')
+
+
 ### Ruta del login
 @app.route('/login')
 def inicio(): 

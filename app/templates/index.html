@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockDoc website Design</title>
+    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/03c9574a2d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class = "header">
+        <nav>
+            <a href = "index.html"><img src="img/logo-new.jpg"></a>
+            <div class = "nav-links" id = "navLinks">
+                <i class="fa fa-times" onclick = "hideMenu()"></i>
+                <ul>
+                    <li><a href="">NOSOTROS</a></li>
+                    <li><a href="">SERVICIOS</a></li>
+                    <li><a href="">TECNOLOGÍAS</a></li>
+                    <li><a href="">CLIENTES</a></li>
+                    <li><a href="">CONTACTOS</a></li>
+                    <li><a href="/login">INICIO SESIÓN</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick = "showMenu()"></i>
+        </nav>
+    
+        <div class="text-box">
+            <h1>BLockDoc</h1>
+            <p>Identificación de certificados académicos usando tecnología Blockchain</p>
+            <a href = "" class = "hero-btn">Visita para saber más</a>
+        </div>
+    </section>
+
+    <!-- Servicios que ofrecemos-->
+
+    <section class = "services">
+        <h1>Servicios que ofrecemos</h1>
+
+        <div class="row">
+            <div class="service-col">
+                <h3>Centros educativos</h3>
+                <p>Brindamos descentralización de registros académicos emitidos por las instituciones educativas, 
+                   los cuales se encuentren en una red inmutable y segura, esto mediante la ayuda del Blockchain y tecnologías Cloud.
+                </p>
+            </div>
+
+            <div class="service-col">
+                <h3>Áreas de Recursos Humanos</h3>
+                <p>Brindar una solución que permita verificar la validez de certificados de postulantes a un puesto laboral que 
+                   coloquen en su curriculum vitae, esto mediante la digitalización de los documentos presentados por los participantes, 
+                   casi de manera automática.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!--Sobre nosotros-->
+    
+    <section class = "nosotros">
+        <div class = "container">
+            <div class = "head-container">
+                <h1>Sobre nosotros</h1>
+                <p>Somos estudiantes de Ingeniería de Sistemas en la Universidad Nacional de Ingeniería apasionados 
+                    por la tecnología y el emprendimiento.
+                </p>
+            </div>
+            <div class = "sub-container">
+                <div class = "teams">
+                    <img src = "img/Renzo.jpg" alt = "">
+                    <div class="name">Renzo Guerrero Huayta</div>
+                    <div class="desig">Developer</div>
+                    <div class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint, animi. 
+                        Distinctio debitis ducimus perferendis quidem.</div>
+                    <div class="social-links">
+                        <a href="#"><i class = "fa fa-facebook"></i></a>
+                        <a href="#"><i class = "fa fa-linkedin"></i></a>
+                        <a href="#"><i class = "fa fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class = "teams">
+                    <img src = "img/testimonials01.jpg"  alt = "">
+                    <div class="name">Cristhian Salazar Trinidad</div>
+                    <div class="desig">Manager</div>
+                    <div class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint, animi. 
+                        Distinctio debitis ducimus perferendis quidem. </div>
+                    <div class="social-links">
+                        <a href="#"><i class = "fa fa-facebook"></i></a>
+                        <a href="#"><i class = "fa fa-linkedin"></i></a>
+                        <a href="#"><i class = "fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Tecnologias-->
+    <section class = "tecnologies">
+        <h1>Tecnologías que usamos</h1>
+
+        <div class="row">
+            <div class = "tecnologies-col">
+                <img src = "img/tecnologia-blockchain.jpg">
+                <h3>Blockchain</h3>
+                <p>Blockchain es un libro mayor compartido e inmutable que facilita el proceso de registro de transacciones y 
+                    de seguimiento de activos en una red de negocios. Un activo puede ser tangible (una casa, un auto, dinero en efectivo, terrenos) o intangible (propiedad intelectual, patentes, derechos de autor, marcas). 
+                    Prácticamente cualquier cosa de valor puede ser rastreada y comercializada en una red de blockchain, reduciendo el riesgo y los costos para todos los involucrados.
+                </p>
+            </div>
+
+            <div class = "tecnologies-col">
+                <img src = "img/tecnologia-web3.jpg">
+                <h3>Web 3.0</h3>
+                <p>Es una web más democrática, más abierta, donde la descentralización de los servicios se refiere a que cualquiera puede ser propietario. 
+                    Y más transparente, porque los datos de las blockchain son completamente abiertos y públicos, con lo que los participantes pueden ver lo 
+                    que sucede. </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!--Testimonios-->
+    <section class="testimonials">
+        <h1>Lo que piesan nuestros clientes</h1>
+        <div class="row">
+            <div class = "testimonial-col">
+                <img src = "img/testimonials01.jpg">
+                <div>
+                    <p>BlockDoc es una solución increíble, nos permitió salvaguardar nuestros certificados de diplomados, cursos de especialización 
+                        y otros cursos de capacitación en uan red inmutable y descentralizada en los cuales sólo existan certificados que han sido 
+                        emitidos por nuestra institución, sin tener que preocuparnos que otros mal usen el nombre de nuestra institución.
+                    </p>
+                    <h3>Laura Perez - <i>Directora de CEPS UNI</i></h3>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+
+            <div class = "testimonial-col">
+                <img src = "img/testimonials02.png">
+                <div>
+                    <p>BlockDoc refuerza la credibilidad de los documentos gracias a la cualidad de inmutabilidad que presenta además nos ayuda
+                        en la toma de decisiones de selección de personal haciendo de forma muy fácil y rápida el proceso de verificación y selección
+                        de los postulantes a un puesto de trabajo.
+                    </p>
+                    <h3>Mishel Berru - <i>Gerente del área de RRHH del BCP</i></h3>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="cta">
+        <h1>Pregunta sobre nuestros planes <br> desde cualquier lugar del Perú.</h1>
+        <a href = "" class = "hero-btn">CONTACTANOS</a>
+    </section>
+
+    <!-- Footer -->
+    <section class = "footer">
+        <h4>About Us</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vero molestias maiores in officiis nulla ullam quaerat impedit, 
+            <br>non expedita inventore est dolores provident veniam ipsum eveniet totam! Harum, quibusdam!
+        </p>
+
+        <div class = "icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-youtube"></i>
+            <i class="fa fa-linkedin"></i> 
+        </div>
+    </section>
+    <script src = "js/homepage.js"></script>
+</body>
+</html>

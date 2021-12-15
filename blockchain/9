@@ -1,0 +1,17 @@
+{
+    "nombres": "Maria Fernanda",
+    "ap_paterno": "Irigoin",
+    "ap_materno": "Cardenas",
+    "dni": 83214531,
+    "curso": "Excel",
+    "fecha_inicio_fin": "11/30/2021-12/11/2021",
+    "nota": 19,
+    "institucion": "CTIC UNI",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Sat%20Dec%2011%202021%2016%3A18%3A41%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-kisspng-firebase-cloud-messaging-google-cloud-messaging-api-as-a-service-5b1bf782ac0ca2.2103995315285594907047.jpg?alt=media&token=2ef76b9d-9002-4ed0-8dd3-b38349ae3456",
+    "hash_image": "92d83e14b7bfcf3ebf1c6006c8b06e6a8c7211010e1ddce6a3ab244de2afdf57",
+    "prev_block": {
+        "hash": "0470b260ef3396da117f97166c7e58a8",
+        "filename": "8"
+    }
+}

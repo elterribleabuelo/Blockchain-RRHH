@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         // Guardamos la variable items_json con localStorage para poder recibirla y leerla en otra vista
         localStorage.setItem('testObject', JSON.stringify(items_json));
-        
+
         // Guardamos los id de las imágenes los cuales son los valores del hash de la blockchain con localStorage
         localStorage.setItem('testObjectID',JSON.stringify(ids));
 
@@ -99,12 +99,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
     function showFiles(files){
         /* Identificar si estamos subiendo solo una imagen o varias 
         */
+        
+        var count = 1
     
         if (files.length == undefined){
-            processFile(files);
+            processFile(files,count);
         }else{
             for(const file of files){
-                processFile(file);
+                processFile(file,count);
+                count = count + 1;
+
             }
         }
         
@@ -121,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
       
     
-    function processFile(file){
+    function processFile(file,count){
         /*Procesar imágenes */
         const docType = file.type;
         const validExtensions = ["image/jpeg","image/jpg","image/png","image/gif"];
@@ -148,11 +152,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
     
                 const image = `
                     <div id = "${id}" class = "file-container">
+                        <strong><span>Documento ${count}: </span></strong>
                         <img src = "${fileUrl}" alt = "${file.name}" id = "${encrypted}" width = "50">
                         <div class = "status">
                             <span>${file.name}</span>
                             <span class = "status-text">
-                                Ok
+                                Cargado correctamente
                             </span>
                         </div>
                     </div>

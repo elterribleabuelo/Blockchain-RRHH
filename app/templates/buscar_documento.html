@@ -31,19 +31,23 @@
     <!--header area end-->
 
     <!--Interfaz para subir imagen-->
-    <div class="drop-area">
-        <h2>Arrastra y suelta imágenes</h2>
+    <div class = "container" style = "margin:120px;">
+      <h1 class = "title has-text-centered is-1 has-text-primary is-spaced">Búsqueda por archivo</h1>
+      <div class="drop-area">
+        <center><h2>Arrastra y suelta las imágenes</h2></center>
         <span>O</span>
         <button>Selecciona tus archivos</button>
         <input type = "file" name = "" id = "input-file" hidden multiple />
+      </div>
+
+      <div id = "preview">
+
+      </div>
+
+      <div>
+        <center><button type="button" class="btn btn-success" id = "buscar" name = "buscar" style = "margin-top:10px;">Buscar</button></center>
+      </div>
     </div>
-
-    <div id = "preview"></div>
-
-    <div>
-      <center><button type="button" class="btn btn-success" id = "buscar" name = "buscar" style = "margin-top:10px;">Buscar</button></center>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>

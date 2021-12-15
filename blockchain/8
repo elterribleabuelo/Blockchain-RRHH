@@ -1,0 +1,17 @@
+{
+    "nombres": "Gabriel",
+    "ap_paterno": "Caceres",
+    "ap_materno": "Najar",
+    "dni": 88888888,
+    "curso": "Python IA",
+    "fecha_inicio_fin": "12/05/2021-12/26/2021",
+    "nota": 16,
+    "institucion": "SISTEMAS UNI",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Sat%20Dec%2004%202021%2016%3A29%3A36%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-prueba_clase.png?alt=media&token=52e945cf-eaab-42a6-b1ef-5e1915611a3f",
+    "hash_image": "65cb350d19e2bf36b4b5387ea0afb788331ea4de10a9e5633363b904fd12d60e",
+    "prev_block": {
+        "hash": "45fdee0ef0ee368c7637d98de5b7cddc",
+        "filename": "7"
+    }
+}

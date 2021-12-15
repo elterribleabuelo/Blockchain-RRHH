@@ -21,6 +21,8 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-right: 400px;
+    margin-left: 400px;
 }
 
 .drop-area.active{
