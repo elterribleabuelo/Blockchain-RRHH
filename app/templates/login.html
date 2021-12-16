@@ -23,27 +23,26 @@
                 <i class="fa fa-linkedin"></i>
             </div>
 
-            <form action="submit" class="input-group" id = "login">
+            <form action = "submit" class = "input-group" id = "login">
                 <input type="email" class = "input-field" placeholder = "Email" name = "email" id = "email" required>
                 <input type="password" class = "input-field" placeholder = "Contraseña" name = "password" id = "password" required>
                 <input type="checkbox" class = "check-box"><span>Recordar contraseña</span>
                 <button type = "submit" class = "submit-btn">Acceder</button>
             </form>
 
-            <form action="submit" class="input-group" id = "registrar">
-                <input type="text" class = "input-field" placeholder = "Nombre de usuario" name = "nombUsuario" id = "nombUsuario"  required>
-                <input type="email" class = "input-field" placeholder = "Correo" name = "emailRegister" id = "emailRegister" required>
-                <input type="password" class = "input-field" placeholder = "Contraseña" name = "passwordRegister" id = "passwordRegister" required>
-                <input type="checkbox" class = "check-box"><span>Aceptar términos y condiciones</span>
-                <button type = "submit" class = "submit-btn">Acceder</button>
+            <form  action = "submit" class = "input-group" id = "registrar" >
+                <input  type = "text" class = "input-field" placeholder = "Nombre de usuario" name = "nombUsuario" id = "nombUsuario"  required>
+                <input  type = "email" class = "input-field" placeholder = "Correo" name = "emailRegister" id = "emailRegister" required>
+                <input  type = "password" class = "input-field" placeholder = "Contraseña" name = "passwordRegister" id = "passwordRegister" required>
+                <input  type = "checkbox" class = "check-box"><span>Aceptar términos y condiciones</span>
+                <button type = "submit" class = "submit-btn">Registrarme</button>
             </form>
-
-
         </div>
     </div>
         
     <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
     <script src = "js/authentication.js"></script>
 </body>
 </html>
