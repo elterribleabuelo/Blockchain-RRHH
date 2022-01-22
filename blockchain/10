@@ -1,0 +1,17 @@
+{
+    "nombres": "Hans",
+    "ap_paterno": "Cardenas",
+    "ap_materno": "Gonzales",
+    "dni": 11111111,
+    "curso": "Programacion en C",
+    "fecha_inicio_fin": "01/20/2022-01/27/2022",
+    "nota": 18,
+    "institucion": "SISTEMAS UNI",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Jan%2007%202022%2012%3A50%3A28%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-Feria01.jpg?alt=media&token=3a4c1573-c3c1-4c4f-aae3-690a9c7265ed",
+    "hash_image": "50026e124c37cdcc207f5816e540ee44f7704e9ea4bdd57e3cec142bdece93bf",
+    "prev_block": {
+        "hash": "ac3b9d352c068502dc9f080a38c2f2d5",
+        "filename": "9"
+    }
+}

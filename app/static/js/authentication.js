@@ -1,5 +1,4 @@
 function lanzadera(){
-    stateUser();
     setTimeout(inicializar, 5000);
     registrar_datos();
 }
@@ -9,6 +8,9 @@ window.onload = lanzadera;
 var formAutenticacion;
 var login_est = false;
 var rol = null;
+let isAuthReady = false
+
+
 
 var firebaseConfig = {
     apiKey: "AIzaSyD4J4LpWyK7oRDw0v1QeU6nXCf1yn0FfCk",
@@ -70,13 +72,15 @@ function registrar_firebase(event){
         .catch(function(error){
             console.log(error);
         }).then(function(result){
+
             //  Vemos si el usuario se creo en el modulo de autenticacion
             console.log('exito al crear el usuario en Firebase Autehtication');
 
             const path = 'Usuarios';
 
             // Recuperamos el id unico del usuario
-            const id = result.user.uid;
+            const id = result.user.uid; 
+            console.log("IDDD:", id);
 
             // Campo uid --> "id" es devolvido por el Backend del modulo de autenticacion
             this.datos.uid = id;
@@ -91,7 +95,7 @@ function registrar_firebase(event){
             db.collection(path).doc(id).set(this.datos)
             .then(() =>{
                 console.log("Registrado con éxito en Firebase Firestore");
-                window.location.href = "/panel_admin_rrhh";
+                //window.location.href = "/panel_admin_rrhh";
             })
             .catch((error) =>{
                 console.error("Error al guardar en Firestore: ", error);
@@ -101,44 +105,31 @@ function registrar_firebase(event){
 };
 
 
-function getDatosUser(uid){
+async function getDatosUser(uid){
     const path = 'Usuarios';
     const id = uid;
     var db = firebase.firestore();
-    var docRef = db.collection(path).doc(id);
-
-    docRef.get().then((doc) => {
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
-            if (doc.data()){
-                rol = doc.data().perfil;
-                console.log("ROL EN GET DATOS USER:", rol);
-                return rol;
-            }
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");    
-        }
-    }).catch((error) => {
-        console.log("Error getting document:", error);        
-    });
+    
+    // Problema del asincronismo del Firebase esta aquí.
+    var snapshot = await db.collection(path).doc(id).get();
+    // console.log("SNAPSHOT DATA:", snapshot.data());
+    // console.log("SNAPSHOT DATA PERFIL:", snapshot.data().perfil);
+    return snapshot.data();
 }
 
-function stateUser(){
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          var uid = user.uid;
-          console.log("Esta logeado");
-          login_est = true;
-          rol = getDatosUser(uid);
-          console.log("UID:",uid);
-          return uid;
+function stateUser(){ 
 
-        }else{
-          console.log("no esta logeado");
-          login_est = false;
-        }
-    });
+    const user = firebase.auth().currentUser;
+
+    if(user){
+        var uid = user.uid;
+        console.log("Esta logeado");
+        login_est = true;
+        return uid;
+    }else{
+        console.log("no esta logeado");
+        login_est = false;
+    }
 }
 
 
@@ -149,49 +140,47 @@ function autentificar(event){
     var contrasena = event.target.password.value;
 
     firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
-        .catch(function(incorrecto) {
-            console.log("Incorrecto");
-            alert("Credenciales incorrectas");
-            }).then(function(result){
-                var uid = stateUser();
-                rol = getDatosUser(uid);
-                //console.log(result);
-                console.log("Su rol es: ", rol);
-                if(rol == 'rrhh'){
+    .then((userCredential) => {
+        
+        var uid = stateUser();
+        console.log("Su UID es:", uid);
+        
+        rol = getDatosUser(uid);
+        rol.then((result) =>{
+            // console.log("Resultado de la promesa:", result);
+            try{ 
+                var rol_final = result["perfil"];
+                console.log("Resultado del perfil:", result["perfil"]);
+                if(rol_final == 'rrhh'){
+                    console.log("Dirigiendose a la vista de rrhh");
                     window.location.href = "/panel_admin_rrhh";
                 }
-                else{
-                    window.location.href = "/panel_admin_centro";
-                }
-                // window.location.href = "/panel_admin_centro";
-                /*firebase.auth().currentUser.getIdToken()
-                .then(function(idTokenResult){
 
-                    if (!!idTokenResult.claims.admin) {
-                        console.log("Admin");
-                        window.location.href = "/panel_admin_centro";
-                    }
-                    else{
-                        console.log("Usuario que no es administrador");
-                    }
-
-                }).catch(function(error){
-                    console.log(error);
-                })
-                */
-            });
+            }catch(error){
+                // console.error(error)
+                console.log("Dirigiendose a la vista de centro de estudios");
+                window.location.href = "/panel_admin_centro";
+            }
+        });
+    }).catch((error) => { 
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Credenciales incorrectas");
+        console.log("Algo mal ha ocurrido, vuelva a escribir sus contraseñas");
+        console.log("Codigo de error:", errorCode);
+        console.log("Mensaje de error:",errorMessage);
+      });
 };
 
 
-/*function createDoc(data,path,id){
-    const collection = firebase().firestore.collection(path);
-    return collection.doc(id).set(data)
-}*/
 
-// https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth
-// https://firebase.google.com/docs/auth/web/start
-// https://firebase.google.com/docs/firestore/quickstart?hl=es
-// http://codexexempla.org/articulos/2007/lanzar_funciones.php
-// https://firebase.google.com/docs/firestore/quickstart?hl=es
-// https://cloud.google.com/firestore/docs/manage-data/add-data#web-version-8
-// https://firebase.google.com/docs/firestore/data-model
+
+// Asyncrosinmo Firebase - async wait .get()
+// https://stackoverflow.com/questions/49432579/await-is-only-valid-in-async-function
+// https://stackoverflow.com/questions/38884522/why-is-my-asynchronous-function-returning-promise-pending-instead-of-a-val
+// https://stackoverflow.com/questions/38884522/why-is-my-asynchronous-function-returning-promise-pending-instead-of-a-val
+// https://stackoverflow.com/questions/38639837/firebase-uncaught-in-promise-typeerror-cannot-read-property
+// https://escuelavue.es/series/curso-firebase-gratis/vue-firebase-leer-documentos/
+// https://firebase.google.com/docs/auth/web/manage-users?hl=es
+// https://stackoverflow.com/questions/38228376/how-does-the-firebase-authstatelistener-work
+// https://stackoverflow.com/questions/46590155/firestore-permission-denied-missing-or-insufficient-permissions

@@ -1,0 +1,17 @@
+{
+    "nombres": "Raul",
+    "ap_paterno": "Caceres",
+    "ap_materno": "Pardo",
+    "dni": 56014520,
+    "curso": "Python Intermedio",
+    "fecha_inicio_fin": "11/27/2021-12/11/2021",
+    "nota": 17,
+    "institucion": "SISTEMAS UNI",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Fri%20Jan%2007%202022%2014%3A13%3A04%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-Feria02.jpg?alt=media&token=30acd010-14d4-4f70-b275-df373f00979e",
+    "hash_image": "26f80a3bfa312dee14dc8dbba13783b2810e2e6678fadf0d3bb0f29dba810625",
+    "prev_block": {
+        "hash": "66aea518402bef2247f5796863fec28c",
+        "filename": "10"
+    }
+}
