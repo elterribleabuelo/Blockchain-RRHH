@@ -106,6 +106,7 @@ def registrar_diploma():
         """print("Datos que llegan a la blockchain:" , dni,nombres,ap_paterno,ap_materno,nomb_curso,
               fecha_inicio_fin,nota,condicion,institucion)"""
         
+        # Escribiendo en la blockchain
         write_block(dni = dni, nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno,
                     curso = nomb_curso , fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
                     institucion = institucion, condicion = condicion, link = link, hash_image = hash_image

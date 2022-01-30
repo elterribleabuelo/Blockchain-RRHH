@@ -1,8 +1,11 @@
 // Variables desde el HTML
 let $dni = document.getElementById('dni');
 let $nomb_curso = document.getElementById('nomb_curso');
+let $institucion = document.getElementById('institucion'); 
 let $nota = document.getElementById('nota');
-let $institucion = document.getElementById('institucion');
+let $imagen_diploma = document.getElementById('imagen_diploma');
+let $link = document.getElementById('link'); 
+let $hash_image = document.getElementById("hash");
 
 // Conexion a firebase
 
@@ -21,7 +24,25 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 /**********************************************  Importamos FireRealTimeDatabase   *****************************************/
-var db = firebase.database();
+var db = firebase.database(); 
+
+// Objeto respuesta
+var respuesta_block = {
+    ap_materno : "",
+    ap_paterno : "",
+    dni :  "",
+    nombres : "",
+    nomb_curso : "",
+    nota : "",
+    institucion: "",
+    link : "",
+    hash_image : "",
+    condicion: "",
+    fecha_inicio_fin: ""
+};
+
+var keys_block = Object.keys(respuesta_block);
+console.log("Claves del bloque:",keys_block);
 
 // Cargando los DNI de alumno de forma automática
 
@@ -46,13 +67,43 @@ var db = firebase.database();
                 $dni.innerHTML += `<option value = "${doc.val()['dni']}"> ${doc.val()['dni']} </option>.`
             }
         });
-    });
+    }); 
 
-}());
+    document.getElementById('subida_diploma').style.visibility = "hidden"; // oculto
+    document.getElementById('imagen_diploma').style.visibility = "hidden"; // oculto
+
+}()); 
+
+// Funciones
+
+function base64ToHex(str) {
+    const raw = window.atob(str);
+    let result = '';
+    for (let i = 0; i < raw.length; i++) {
+      const hex = raw.charCodeAt(i).toString(16);
+      result += (hex.length === 2 ? hex : '0' + hex);
+    }
+    return result.toUpperCase();
+}
 
 // Cargando los cursos que llevo el alumno segun el DNI ingresado 
 
 $dni.addEventListener('change',function(){
+    var count = 0;
+    // Obtenemos las variables nombre,ap.paterno,ap.materno,condición,fecha_inicio_fin apartir del DNI 
+    var pathAlumnos = db.ref('proyecto/alumnos');
+    var pathAlumnos = pathAlumnos.child($dni.value);
+
+    pathAlumnos.on('value',function(alumnos){ 
+        console.log("Estructura de datos:",alumnos);
+        console.log("Data alumno:", Object.keys(alumnos.val()));
+        alumnos.forEach((alum) =>{ 
+            var llave = keys_block[count]; 
+            respuesta_block[llave] = alum.val();
+            count = count + 1; 
+        });
+    });
+    // console.log("RPTA BLOCK:",respuesta_block);
     
     // Limpiando el select  de codigo de curso 
     var length = $nomb_curso.length;
@@ -83,53 +134,139 @@ $dni.addEventListener('change',function(){
 
             console.log(doc.val());
 
-            $nomb_curso.innerHTML += `<option value = "${doc.val()['curso']}"> ${doc.val()['curso']} </option>.`
-
-            /*doc.forEach((e) => {
-                //console.log(doc.val());
-                //console.log("=====");
-                console.log("=====");
-                console.log(e.val());
-                
-                $cod_curso.innerHTML += `<option value = "${e.val()['curso']}"> ${e.val()['curso']} </option>.`
-                
-                    
-            });*/
-
-
-            /*for (i = 0 ; i < length_claves; i++) {
-                var codigo_curso = claves[i];
-                if (!listaCursosUnicos.includes(doc.val()['curso'])){
-                    // Llenando elementos a la lista
-                    this.listaCursosUnicos.push(doc.val()['curso']);
-                    console.log("La clave del curso es :" + codigo_curso);
-                    $cod_curso.innerHTML += `<option value = "${codigo_curso}"> ${doc.val()['curso']} </option>.`
-                }
-            }*/
-            
-
-            //$cod_curso.innerHTML += `<option value = "${claves[i]}"> ${doc.val()['curso']} </option>.`
-
-            /*doc.forEach((e) => {
-                //console.log(doc.val());
-                console.log("=====");
-                console.log(e.val());
-                
-                $cod_curso.innerHTML += `<option value = "${e.val()['curso']}"> ${e.val()['curso']} </option>.`
-                
-                    
-            });*/
-            
-            
+            $nomb_curso.innerHTML += `<option value = "${doc.val()['curso']}"> ${doc.val()['curso']} </option>.` 
+            respuesta_block.nomb_curso = doc.val()['curso'];
         });
-           
-        
-
-        //console.log(claves);
         
     }); 
 
 });
+
+$nomb_curso.addEventListener('change',function(){
+    var pathAlumnosCursos = db.ref('proyecto/alumnos_cursos');
+    var pathAlumnosCursos = pathAlumnosCursos.child($dni.value); 
+    pathAlumnosCursos.on('value',function(datos){
+        
+        datos.forEach((doc) => {
+            if ($nomb_curso.value == doc.val()['curso']){
+                var fecha_inicio_fin = doc.val()['fecha_inicio_fin']; 
+                respuesta_block.fecha_inicio_fin = fecha_inicio_fin;
+            }
+        });
+    
+    });
+
+});
+
+$nota.addEventListener('change',function(){ 
+
+    respuesta_block.nota = $nota.value;
+    
+    if ($nota.value > 14){
+        document.getElementById('subida_diploma').style.visibility = ""; // show
+        document.getElementById('imagen_diploma').style.visibility = ""; // show 
+        respuesta_block.condicion = 'Aprobado';
+    }
+    else{
+        document.getElementById('subida_diploma').style.visibility = "hidden"; // show
+        document.getElementById('imagen_diploma').style.visibility = "hidden"; // show 
+        respuesta_block.condicion = 'Desprobado';
+    }
+});
+
+$institucion.addEventListener('change',function(){
+    respuesta_block.institucion = $institucion.value;
+});  
+
+$imagen_diploma.addEventListener('change',function(){ 
+
+    var myModal = new bootstrap.Modal(document.getElementById('ventana_modal'), {
+        keyboard: false
+      }); 
+
+    myModal.show();
+
+    var vtn_modal = document.getElementsByClassName("modal");
+    vtn_modal[0].addEventListener('click',function(event){
+        //console.log("ESTOY AQUIIIIIIII");
+        if(event.target.value == "yes"){
+            
+            const ref = firebase.storage().ref();
+            //console.log(ref);
+            const file = document.querySelector('#imagen_diploma').files[0];
+
+            var fileReader = new FileReader();
+
+            fileReader.onload = function(FileLoadEvent){
+                var srcData = FileLoadEvent.target.result;
+                //console.log(srcData);
+                var base64result = srcData.split(',')[1];
+                console.log("Base 64:",base64result); // Hasta acá son iguales
+
+                // Base 64 a Hexadecimal
+                var hexString = base64ToHex(base64result);
+
+                // Hexadecimal a SHA256
+                var encrypted = CryptoJS.SHA256(hexString);
+                encrypted = encrypted.toString();  // Hash con el que se compara en la Blockchain
+                
+                // Añadimos el valor al value del elemento oculto del HTML
+                document.getElementById("hash").value = encrypted;
+                respuesta_block.hash_image = encrypted;
+                console.log("SHA 256:",encrypted);
+            }
+
+            fileReader.readAsDataURL(file);
+
+            //console.log(file);
+            const name = new Date() + '-' + file.name;
+            //console.log(name);
+            
+            if (file == null){
+                alert("Debe seleccionar el diploma del participante");
+            }
+            else{
+                const metadata = {
+                    contentType: file.type
+                };
+                
+                const task = ref.child(name).put(file,metadata);
+
+                task.
+                then(snapshot => snapshot.ref.getDownloadURL()) // snapshot.ref.getDownloadURL(): obtiene la url de la imagen
+                .then (url =>{
+
+                    console.log("URL:", url); // url de forma explicita
+                    
+                    const fileUrl = url; // URL del cliente - imagen local del equipo
+                    console.log(fileUrl);
+                    
+                    
+                    // Asignamos la imagen al elemento
+                    const imageElement = document.querySelector('#imagen_diploma');
+                    imageElement.src = url;
+                    
+                    // Añadimos el valor al value del elemento del HTML 
+                    document.getElementById("link").value = url; 
+                    respuesta_block.link = url;
+                })
+                //document.getElementById("link").value = url;
+            }
+
+
+            //console.log(ref); // Lo muestra cuando da click al boton registrar
+            
+            // Desaparecemos la ventana
+            myModal.hide();
+        }
+        else if(event.target.value == "no"){
+            myModal.hide();
+        }
+    });
+    
+});
+
+
 
 
 
