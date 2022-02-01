@@ -1,12 +1,36 @@
 {
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "browserify": "^17.0.0",
     "buffer": "^6.0.3",
     "firebase": "^9.5.0",
+    "lite-server": "^2.6.1",
     "sha256-file": "^1.0.0",
     "venv": "^1.0.1"
   },
   "devDependencies": {
     "@types/browserify": "^12.0.37"
-  }
+  },
+  "name": "blockchain-diplomas",
+  "description": "",
+  "version": "1.0.0",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elterribleabuelo/Blockchain-RRHH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elterribleabuelo/Blockchain-RRHH/issues"
+  },
+  "homepage": "https://github.com/elterribleabuelo/Blockchain-RRHH#readme"
 }

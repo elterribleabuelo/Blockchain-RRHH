@@ -2,12 +2,14 @@ from flask import Flask
 from flask.templating import render_template 
 from flask import render_template 
 from flask import request
+from flask import send_from_directory
 from block import write_block, check_integrity, read_blockchain
 from firebase import firebase
 import firebase_configuration
 import pyrebase
 import json
 import hashlib
+import requests
 import os
 
 
@@ -46,7 +48,14 @@ def panel_admin_centro():
 
 ## Ruta del registro de diplomas
 @app.route('/registrar_diploma', methods = ['POST', 'GET'])
-def registrar_diploma():
+def registrar_diploma(): 
+    
+    site_root = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(site_root, 'build/contracts', 'CertificadosContract.json') 
+    
+    with open(filename) as test_file:
+        json_data = json.load(test_file)
+    
     if request.method == 'POST':
         
         ### Obtenemos las variables del formulario
@@ -112,7 +121,7 @@ def registrar_diploma():
                     institucion = institucion, condicion = condicion, link = link, hash_image = hash_image
                     )
 
-    return render_template('registrar_diploma.html') 
+    return render_template('registrar_diploma.html', temp = json.dumps(json_data))
 
 
 @app.route('/checking')
@@ -286,7 +295,7 @@ def buscar_documento():
 ### Ruta para obtener los resultados de la búsqueda
 @app.route('/filtrado_CV')
 def filtrado_CV():    
-    return render_template('filtrado_CV.html')
+    return render_template('filtrado_CV.html') 
 
 if __name__ == '__main__': 
     app.run(debug = True, port = 4000)

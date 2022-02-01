@@ -1,0 +1,17 @@
+{
+    "nombres": "Raul",
+    "ap_paterno": "Caceres",
+    "ap_materno": "Pardo",
+    "dni": 56014520,
+    "curso": "Python Intermedio",
+    "fecha_inicio_fin": "11/27/2021-12/11/2021",
+    "nota": 17,
+    "institucion": "SISTEMAS UNI",
+    "condicion": "APROBADO",
+    "link": "https://firebasestorage.googleapis.com/v0/b/blockchain-29b1a.appspot.com/o/Tue%20Feb%2001%202022%2004%3A04%3A03%20GMT-0500%20(hora%20est%C3%A1ndar%20de%20Per%C3%BA)-mandelbrotset.jpg?alt=media&token=e620a3dd-4d75-4862-9dd2-f907459ab333",
+    "hash_image": "ff4bf81aece994ca4e16e7b078dbd2bffe79b9f2cc34808cfbcd50d69072ab98",
+    "prev_block": {
+        "hash": "ef48459be94f930371e8f1e5f97f0b35",
+        "filename": "11"
+    }
+}

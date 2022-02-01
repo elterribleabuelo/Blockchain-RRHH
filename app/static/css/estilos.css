@@ -164,6 +164,7 @@ label #sidebar_btn:hover{
     height: 100vh;
     transition: 0.5s;*/
     /*left: -70%;*/
+    display: block;
     float: right; 
     margin-left: 100px;
     margin-top: 100px;

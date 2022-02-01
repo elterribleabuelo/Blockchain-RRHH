@@ -1,0 +1,12 @@
+{
+    "server":{
+        "baseDir" : [
+            "./app/static",
+            "./build/contracts"
+        ],
+        "routes":{
+            "libs" : "./node_modules"
+        }
+    },
+    "port":"4000"
+}

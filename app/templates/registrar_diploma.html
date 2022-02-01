@@ -31,88 +31,97 @@
         
         <main class = "main">
             <div class = "container_diploma">
-                <div class="col-6 mx-auto mt-5">
-                    <h1 class = 'mb-5'>Registro de diplomas</h1>
-                    
-                        <form action = "{{ url_for('registrar_diploma') }}" method = "POST">
-
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">DNI</span>
-                                <select class = "form-control" id = "dni" name = "dni">
-                                   <!--Debe ser dinámico desde Firebase--> 
-                                    <option selected="">Seleccione el dni del alumno</option>
-                                </select>
-                            </div>
-                            <!--Aquí viaja como value el cod_curso pero se muestra en el select el nombre del curso-->
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Nombre del Curso</span>
-                                <select class = "form-control" id = "nomb_curso" name = "nomb_curso">
-                                   <!--Debe ser dinámico desde Firebase-->
-                                    <option selected="">Seleccione el nombre del curso</option>
-                                </select>
-                            </div>
-
-                            <label for="nota" class="form-label">Nota</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Nota</span>
-                                <input type="text" class="form-control" id = "nota" aria-describedby = "basic-addon3" name = "nota">
-                            </div>
-
-
-                            <label for="institucion" class="form-label">Institución</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Institución</span>
-                                <input type="text" class="form-control" id="institucion" aria-describedby="basic-addon3" name = "institucion">
-                            </div>
-
-                            <label for="institucion" class="form-label" id = "subida_diploma" name = "subida_diploma">Subir diploma</label>
-                            <input type = "hidden" id = "link" name = "link">
-                            <input type = "hidden" id = "hash" name = "hash">
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" id = "imagen_diploma" aria-describedby="basic-addon3" name = "imagen_diploma">
-                            </div> 
-
-                            <div class="modal" tabindex="-1" id = "ventana_modal">
-                                <div class = "modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Confirmacion</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>¿Esta seguro de subir este archivo?.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" value = "yes">Si</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value = "no">No</button>
-                                    </div>
-                                    </div>
+                <div class="row">
+                    <div class="col-4 mx-auto mt-5">
+                        <div class = "card card-body">
+                            <h1>BlockDoc</h1> 
+                            <span>Wallet</span> 
+                            <span>123456789</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mx-auto mt-5">
+                        <h1 class = 'mb-5'>Registro de diplomas</h1>
+                        
+                            <form action = "{{ url_for('registrar_diploma') }}" method = "POST">
+    
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">DNI</span>
+                                    <select class = "form-control" id = "dni" name = "dni">
+                                       <!--Debe ser dinámico desde Firebase--> 
+                                        <option selected="">Seleccione el dni del alumno</option>
+                                    </select>
                                 </div>
-                            </div>
-
-                            <div class="modal" id="exampleModalToggle2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
+                                <!--Aquí viaja como value el cod_curso pero se muestra en el select el nombre del curso-->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">Nombre del Curso</span>
+                                    <select class = "form-control" id = "nomb_curso" name = "nomb_curso">
+                                       <!--Debe ser dinámico desde Firebase-->
+                                        <option selected="">Seleccione el nombre del curso</option>
+                                    </select>
+                                </div>
+    
+                                <label for="nota" class="form-label">Nota</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">Nota</span>
+                                    <input type="text" class="form-control" id = "nota" aria-describedby = "basic-addon3" name = "nota">
+                                </div>
+    
+    
+                                <label for="institucion" class="form-label">Institución</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">Institución</span>
+                                    <input type="text" class="form-control" id="institucion" aria-describedby="basic-addon3" name = "institucion">
+                                </div>
+    
+                                <label for="institucion" class="form-label" id = "subida_diploma" name = "subida_diploma">Subir diploma</label>
+                                <input type = "hidden" id = "link" name = "link">
+                                <input type = "hidden" id = "hash" name = "hash">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id = "imagen_diploma" aria-describedby="basic-addon3" name = "imagen_diploma">
+                                </div> 
+    
+                                <div class="modal" tabindex="-1" id = "ventana_modal">
+                                    <div class = "modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalToggleLabel2">Diploma guardado</h5>
+                                            <h5 class="modal-title">Confirmacion</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class = "modal-body">
-                                            Documento guardado con éxito!
+                                        <div class="modal-body">
+                                            <p>¿Esta seguro de subir este archivo?.</p>
                                         </div>
-                                        <div class = "modal-footer">
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Fin</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" value = "yes">Si</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value = "no">No</button>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!--Condicion : Aprobado o Desaprobado-->
-                            <!--onclick = "uploadImage()-->
-                            <center>
-                                <button class = "btn btn-primary">Registrar</button>
-                            </center>
-                        </form>
+    
+                                <div class="modal" id="exampleModalToggle2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalToggleLabel2">Diploma guardado</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class = "modal-body">
+                                                Documento guardado con éxito!
+                                            </div>
+                                            <div class = "modal-footer">
+                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Fin</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--Condicion : Aprobado o Desaprobado-->
+                                <!--onclick = "uploadImage()-->
+                                <center>
+                                    <button class = "btn btn-primary">Registrar</button>
+                                </center>
+                            </form>
+                    </div>
                 </div>
             </div>
         </main>
@@ -126,11 +135,17 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script> 
 
+    <script>
+        const certificadosJSONFlask = {{temp | safe}};
+    </script>
+
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/connect_blockchain.js') }}"></script>
     <script type="text/javascript" src = "{{ url_for('static', filename = 'js/load_data_reg_diploma.js') }}"></script>
     <!--<script type="text/javascript" src = "{{ url_for('static', filename = 'js/uploadDiploma.js') }}"></script>-->
     <script type="text/javascript" src = "{{ url_for('static', filename = 'js/animation.js') }}"></script>
+   
     
 </body>
 </html>
