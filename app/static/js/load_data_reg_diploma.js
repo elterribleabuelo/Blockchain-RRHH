@@ -6,6 +6,7 @@ let $nota = document.getElementById('nota');
 let $imagen_diploma = document.getElementById('imagen_diploma');
 let $link = document.getElementById('link'); 
 let $hash_image = document.getElementById("hash");
+const certificadoForm = document.querySelector("#certificadoForm");
 
 // Conexion a firebase
 
@@ -42,11 +43,16 @@ var respuesta_block = {
 };
 
 var keys_block = Object.keys(respuesta_block);
-console.log("Claves del bloque:",keys_block);
+console.log("Claves del bloque:",keys_block); 
 
-// Cargando los DNI de alumno de forma automática
+// Cargando los DNI de alumno de forma automática 
 
-(function(){
+(function(){ 
+
+    document.addEventListener("DOMContentLoaded", () => {
+        App.init();
+    })
+    
     var pathAlumnos = db.ref('proyecto/alumnos');
     pathAlumnos.on('value',function(datos){
 
@@ -264,7 +270,19 @@ $imagen_diploma.addEventListener('change',function(){
         }
     });
     
+}); 
+
+
+certificadoForm.addEventListener("submit",e =>{
+    e.preventDefault();
+    App.createCertificado(respuesta_block.ap_materno,respuesta_block.ap_paterno,respuesta_block.dni,
+                          respuesta_block.nombres,respuesta_block.nomb_curso,respuesta_block.nota,
+                          respuesta_block.institucion,respuesta_block.link,respuesta_block.hash_image,
+                          respuesta_block.condicion,respuesta_block.fecha_inicio_fin);
 });
+
+
+
 
 
 

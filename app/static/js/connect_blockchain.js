@@ -1,8 +1,13 @@
-App = {
-    init: () => { 
+App = { 
+    contracts: {},
+    init: async () => { 
         console.log('Loaded'); 
-        App.loadEthereum();
-        App.loadContracts();
+        await App.loadEthereum();
+        await App.loadContracts();
+        await App.loadAccount();
+        // App.createCertificado();
+        App.render();
+        await App.renderCertificado();
     }, 
 
     loadEthereum: async () => {
@@ -17,17 +22,52 @@ App = {
         else {
             console.log('No ethereum browser is installed.Try it installing Metamask');
         }
+    }, 
+
+    loadAccount: async() =>{
+        const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+        App.account = accounts[0];
+        console.log("Cuenta conectada de la Wallet:",accounts);
     },
 
     // Función que sirve para que se conecte al contrato inteligente
-    loadContracts: function(){
+    loadContracts: async () => {
         var certificadosContractJSON = certificadosJSONFlask;
         console.log("certificadosJSONFlask en connect_blockchain:",certificadosContractJSON);
+        
+        // Guardamos el smart contract recuperado desde un objeto JSON
+        App.contracts.certificadosContract = TruffleContract(certificadosContractJSON); 
+
+        // Conectamos el contrato inteligente con Metamask 
+        App.contracts.certificadosContract.setProvider(App.web3Provider); 
+
+        // Contrato finalmente configurado - desplegado
+        App.certificadosContract = await App.contracts.certificadosContract.deployed();
+    }, 
+
+    // Funcion para mostrar la direccion del wallet 
+    render: () => {
+        document.getElementById('account').innerText = App.account;
+
+    },
+
+    // Funcion para mostrar certificados 
+    renderCertificado: async () => {
+        const certificadoCounter = await App.certificadosContract.certificadoCounter();
+        const certificadoCounterNumber = certificadoCounter.toNumber();
+        console.log("Counter: ",certificadoCounterNumber);
+
+    },
+
+    // Funcion para crear certificados 
+    createCertificado: async (ap_materno,ap_paterno,dni,nombres,nomb_curso,nota,institucion,link,hash_image,condicion,fecha_inicio_fin) => {
+        const result = await App.certificadosContract.createCertificado(ap_materno,ap_paterno,dni,nombres,nomb_curso,nota,institucion,link,hash_image,condicion,fecha_inicio_fin,{
+            from: App.account
+        });
+        console.log(result.logs[0].args);
+        // 2:47
     }
 }
-
-App.init();
-
 
 // https://es.stackoverflow.com/questions/492175/ocupar-json-desde-flask-hacia-un-html
 // https://learntutorials.net/es/flask/topic/1789/trabajando-con-json

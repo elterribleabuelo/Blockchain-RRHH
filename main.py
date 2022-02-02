@@ -56,7 +56,7 @@ def registrar_diploma():
     with open(filename) as test_file:
         json_data = json.load(test_file)
     
-    if request.method == 'POST':
+    """if request.method == 'POST':
         
         ### Obtenemos las variables del formulario
         dni = request.form.get('dni') # Va a la Blockchain
@@ -112,14 +112,13 @@ def registrar_diploma():
             if (nomb_curso == alumno_ref_val[i][1]['curso']):
                 fecha_inicio_fin = str(alumno_ref_val[i][1]['fecha_inicio_fin']) # Va a la Blockchain
         
-        """print("Datos que llegan a la blockchain:" , dni,nombres,ap_paterno,ap_materno,nomb_curso,
-              fecha_inicio_fin,nota,condicion,institucion)"""
+        #print("Datos que llegan a la blockchain:" , dni,nombres,ap_paterno,ap_materno,nomb_curso,fecha_inicio_fin,nota,condicion,institucion)
         
         # Escribiendo en la blockchain
         write_block(dni = dni, nombres = nombres, ap_paterno = ap_paterno, ap_materno = ap_materno,
                     curso = nomb_curso , fecha_inicio_fin = fecha_inicio_fin, nota = nota, 
                     institucion = institucion, condicion = condicion, link = link, hash_image = hash_image
-                    )
+                    )"""
 
     return render_template('registrar_diploma.html', temp = json.dumps(json_data))
 
