@@ -262,9 +262,15 @@ def panel_admin_rrhh():
 ### Ruta para la busqueda por DNI
 @app.route('/buscar_dni')
 def buscar_dni(): 
+    site_root = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(site_root, 'build/contracts', 'CertificadosContract.json') 
+    
+    with open(filename) as test_file:
+        json_data = json.load(test_file)
+    
     ### Llamar aquí los registros de la Blockchain 
     # columns = [] # Campos o claves de la Blockchain
-    items = []   # Registros que estan en la Blockchain
+    """items = []   # Registros que estan en la Blockchain
     registros = os.listdir("./blockchain")
     print("REGISTROS:",registros)
     num_registros = len(registros)
@@ -273,19 +279,26 @@ def buscar_dni():
         with open("./blockchain/" + str(i+1)) as f:
             block = json.load(f)
             items.append(block)
-            #print(f"Bloque {i + 1} ",block)
-            print("\n")
+            #print(f"Bloque {i + 1} ",block)"""
+            #print("\n")
     
-    print(items)
-    print("\n")
-    print(items[0])
-    print(items[0]['nombres'])
+    #print(items)
+    #print("\n")
+    #print(items[0])
+    #print(items[0]['nombres'])
     ### https://www.it-swarm-es.com/es/python/tabla-dinamica-con-python/805667024/
-    return render_template('buscar_dni.html', checking_results = items)
+    return render_template('buscar_dni.html', temp = json.dumps(json_data))
 
 ### Ruta para la busqueda por Documento
 @app.route('/buscar_documento')
 def buscar_documento():
+    
+    site_root = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(site_root, 'build/contracts', 'CertificadosContract.json') 
+    
+    with open(filename) as test_file:
+        json_data = json.load(test_file)
+    
     items = []   # Registros que estan en la Blockchain
     registros = os.listdir("./blockchain")
     num_registros = len(registros)

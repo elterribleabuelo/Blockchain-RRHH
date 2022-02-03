@@ -55,20 +55,26 @@
     <script>
       var someJavaScriptVar = {{checking_results|tojson|safe}};
       var items_json = someJavaScriptVar;
-      //console.log("JSON:", items_json.length);
+
+      console.log("Desde buscar_coumento.html:",items_json);
       /*for (var i = 0; i < items_json.length; i++){
         console.log("Desde HMTL:",items_json[i]['nombres']);
       }*/
-       // https://es.stackoverflow.com/questions/321415/pasar-datos-del-backend-a-js
-       // https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787
-       // https://stackoverflow.com/questions/39077534/how-to-decode-39-in-flask-with-jinja2-template
-       // https://es.stackoverflow.com/questions/39525/como-obtener-length-de-un-json
-       // https://www.it-swarm-es.com/es/javascript/como-puedo-pasar-datos-de-flask-javascript-en-una-plantilla/1068454066/
-       //https://lenguajejs.com/javascript/caracteristicas/json/
-       //https://flask.palletsprojects.com/en/2.0.x/patterns/jquery/
-       //https://www.youtube.com/watch?v=mBLEry1eMMs&t=365s
-       // https://es.stackoverflow.com/questions/150520/crear-un-json-en-javascript/150541
     </script>
-  </script>
+    <script src = "{{ url_for('static', filename = '/node_modules/@truffle/contract/dist/truffle-contract.min.js')}}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/connect_blockchain.js') }}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/listar_certificados.js') }}"></script>
   </body>
 </html>
+
+
+<!--console.log("JSON:", items_json.length);
+https://es.stackoverflow.com/questions/321415/pasar-datos-del-backend-a-js
+https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787
+https://stackoverflow.com/questions/39077534/how-to-decode-39-in-flask-with-jinja2-template
+https://es.stackoverflow.com/questions/39525/como-obtener-length-de-un-json
+https://www.it-swarm-es.com/es/javascript/como-puedo-pasar-datos-de-flask-javascript-en-una-plantilla/1068454066/
+https://lenguajejs.com/javascript/caracteristicas/json/
+https://flask.palletsprojects.com/en/2.0.x/patterns/jquery/
+https://www.youtube.com/watch?v=mBLEry1eMMs&t=365s
+https://es.stackoverflow.com/questions/150520/crear-un-json-en-javascript/150541-->

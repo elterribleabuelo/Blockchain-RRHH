@@ -49,31 +49,14 @@
                     <th>Certificado</th>
                 </tr>
             </thead>
-            <tbody>
-                {% for item in checking_results  %}
-                    <tr>
-                    
-                        <td>{{item['nombres']}}</td>  
-                        <td>{{item['ap_paterno']}}</td>
-                        <td>{{item['ap_materno']}}</td>
-                        <td>{{item['dni']}}</td>
-                        <td>{{item['curso']}}</td>
-                        <td>{{item['nota']}}</td>
-                        <td>{{item['institucion']}}</td>
-                        {%if item['link'] != '' %}
-                            <td><center><a href={{item['link']}}><i class="fas fa-book"></i></a></center></td> 
-                        {% else %}
-                            <td><center><a href="#" class = "sinDiploma"><i class="fas fa-times"></i></a></center></td>
-                        {% endif %}
-                    </tr>
-                {% endfor %}
+            <tbody id = "datatables_list">
             </tbody>
             <tfoot>
                 <tr>
                     <td>Nombres</td>
                     <td>Ap.Paterno</td>
                     <td>Ap.Materno</td>
-                     <td>DNI</td>
+                    <td>DNI</td>
                     <td>Curso</td>
                     <td>Nota</td>
                     <td>Institucion</td>
@@ -84,9 +67,18 @@
 
     </div>
 
-    <script src = "https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src = "https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src = "https://cdn.datatables.net/1.11.3/js/dataTables.bulma.min.js"></script>
-    <script src = "js/datatables.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+    <script src = "{{ url_for('static', filename = '/js/datatables/jquery-3.5.1.js')}}"></script>
+    <script src = "{{ url_for('static', filename = '/js/datatables/jquery.dataTables.js')}}"></script>
+    <script src = "{{ url_for('static', filename = '/js/datatables/dataTables.bulma.js')}}"></script>
+    <!--<script src = "{{ url_for('static', filename = '/js/dataTables.js')}}"></script>-->
+    <script>
+        const certificadosJSONFlask = {{temp | safe}};
+    </script>
+
+    <script src = "{{ url_for('static', filename = '/node_modules/@truffle/contract/dist/truffle-contract.min.js')}}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/connect_blockchain.js') }}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/listar_certificados.js') }}"></script>
   </body>
 </html>

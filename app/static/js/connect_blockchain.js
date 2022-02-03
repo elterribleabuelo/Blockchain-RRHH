@@ -8,6 +8,8 @@ App = {
         // await App.createCertificado();
         App.render();
         await App.renderCertificado();
+        await App.renderCertificadosDatatables();
+        App.searchCertificado();
     }, 
 
     loadEthereum: async () => {
@@ -107,6 +109,86 @@ App = {
             console.log("Error, vista registro de diplomas:",e);
         }
         
+    },
+
+    renderCertificadosDatatables: async () => {
+        try{
+            const certificadoCounter = await App.certificadosContract.certificadoCounter();
+            const certificadoCounterNumber = certificadoCounter.toNumber();
+            // console.log("Counter: ",certificadoCounterNumber);
+            let html = '';
+            var table = document.querySelector('#example');
+
+            for (let i = certificadoCounterNumber; i >= 1; i--){
+                const certificado = await App.certificadosContract.certificados(i);
+                // console.log("CERTIFICADO:",certificado);
+                const certificadoId = certificado[0];
+                const certificado_ap_materno = certificado[1];
+                const certificado_ap_paterno = certificado[2];
+                const certificado_dni = certificado[3];
+                const certificado_nombres = certificado[4];
+                const certificado_nombre_curso = certificado[5];
+                const certificado_nota = certificado[6];
+                const certificado_institucion = certificado[7];
+                const certificado_link = certificado[8];
+                const certificado_hash = certificado[9];
+                const certificado_condicion = certificado[10];
+                const certificado_fecha_inicio_fin = certificado[11];
+                var url = ""
+                var icon = ""
+
+                if (certificado_link != ''){
+                    //var url = document.querySelector("button");
+                     url = certificado_link;
+                     icon = "fas fa-book";
+                }else{
+                     url = "#";
+                     icon = "fas fa-times";
+                }
+
+                let certificadoElementRow = ` 
+
+                    <tr>
+                        <td>${certificado_nombres}</td>  
+                        <td>${certificado_ap_paterno}</td>
+                        <td>${certificado_ap_materno}</td>
+                        <td>${certificado_dni}</td>
+                        <td>${certificado_nombre_curso}</td>
+                        <td>${certificado_nota}</td>
+                        <td>${certificado_institucion}</td>
+                        <td><center><a href = "${url}"><i class = "${icon}"></i></a></center></td> 
+                    </tr>
+                `;
+                html += certificadoElementRow;
+            }
+
+            document.querySelector("#datatables_list").innerHTML = html;
+        } catch(e){
+            console.log("Error, solo disponible en la vista busqueda de dni:",e);
+        }
+    },
+
+    searchCertificado:()=>{
+        $(document).ready(function() {
+            
+            var table = $('#example').DataTable({
+                initComplete: function () {
+                    // Apply the search
+                    this.api().columns([4]).every( function () {
+                        var that = this;
+        
+                        $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                            if ( that.search() !== this.value ) {
+                                that
+                                    .search( this.value )
+                                    .draw();
+                            }
+                        } );
+                    } );
+                }
+            });
+        
+        });
     },
 
     // Funcion para crear certificados 

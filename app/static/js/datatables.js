@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log("DataTables.js");
     //$('#example').DataTable(); 
 
     // Setup - add a text input to each footer cell
@@ -7,8 +8,17 @@ $(document).ready(function() {
         $(this).html( '<input type="text" placeholder = "Buscar por DNI '+title+'" />' );
     } ); 
 
-    // DataTable
+    // DataTable 
     var table = $('#example').DataTable({
+        "searching": true
+    });
+    
+ 
+    // #myInput is a <input type="text"> element
+    $('#myInput').on( 'keyup change clear', function () {
+        table.search( this.value ).draw();
+    });
+    /*var table = $('#example').DataTable({
         initComplete: function () {
             // Apply the search
             this.api().columns([4]).every( function () {
@@ -23,6 +33,6 @@ $(document).ready(function() {
                 } );
             } );
         }
-    });
+    });*/
 
 });
