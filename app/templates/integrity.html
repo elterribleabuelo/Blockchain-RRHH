@@ -41,57 +41,20 @@
 
         <!--sidebar end-->
 
-        <div class = "content">
-            {% for res in checking_results %} 
-
-                {% if res['estado'] == 0 %}
-
-                    
-                        <div class = "card text-white bg-primary mb-3" style="max-height:22rem; max-width: 30rem; width:  350px;height: 400px; float: right;right: -70%;margin-right: 600px;">
-                            <div class="card-header">Bloque:{{res['block']}}<p align = "right"><i class="fas fa-check"></i></p></div>
-                            <div class="card-body">
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Nombres:{{ res['nombres'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">DNI:{{ res['dni'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">CURSO:{{ res['curso'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Fechas:{{ res['fecha_inicio_fin'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">NOTA:{{ res['nota'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Institucion:{{ res['institucion'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Condición:{{ res['condicion'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Hash:{{ res['hash'] }}</p>
-                            </div>
-                        </div>
-                    
-                    <!--Block {{ res['block'] }} : {{ res['result'] }} : {{ res['dni'] }}-->
-
-                {% elif res['estado'] == 1 %} 
-
-                    
-                        <div class = "card text-white bg-secondary mb-3" style="max-height:22rem; max-width: 30rem;width:350px;height: 400px; float: right;right: -70%;margin-right: 600px;">
-                            <div class = "card-header">Bloque:{{res['block']}}<p style="align:right"><i class="fas fa-times"></i></p></div>
-                            <div class = "card-body text-info">
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Nombres:{{ res['nombres'] }}</p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Apellidos:{{ res['ap_paterno'] }} {{ res['ap_materno'] }} </p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">DNI:{{ res['dni'] }}</p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">CURSO:{{ res['curso'] }}</p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Fechas:{{ res['fecha_inicio_fin'] }}</p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">NOTA:{{ res['nota'] }}</p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Institucion:{{ res['institucion'] }}</p>
-                                <p class="card-text" style = "font-size:12px;color:rgb(255, 255, 255);">Condición:{{ res['condicion'] }}</p>
-                                <p class="card-text" style = "font-size:12px; color:rgb(255, 255, 255);">Hash:{{ res['hash'] }}</p>
-                            </div>
-                        </div>
-                    
-
-                    <!--Block {{ res['block'] }} : {{ res['result'] }} : {{ res['condicion'] }}-->
-                
-                {% endif %}
-        
-            {% endfor %}
-            
+        <div class = "content" id = "certificadosList" > 
         </div>
     </div>
-    <!--Implementar un alert que indique que registros de la Blockchain fueron adulterados-->
+    <!--Implementar un alert que indique que registros de la Blockchain fueron adulterados--> 
+
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+    <script>
+        const certificadosJSONFlask = {{temp | safe}};
+    </script>
+    <script src = "{{ url_for('static', filename = '/node_modules/@truffle/contract/dist/truffle-contract.min.js')}}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/connect_blockchain.js') }}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/listar_certificados.js') }}"></script>
+    <script type="text/javascript" src = "{{ url_for('static', filename = 'js/animation.js') }}"></script>
 </body>
 
 </html>

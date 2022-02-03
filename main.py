@@ -132,10 +132,15 @@ def check():
 ### Ruta para comprobar la integridad de la Blockchain
 @app.route('/integrity')
 def integred():
+    site_root = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(site_root, 'build/contracts', 'CertificadosContract.json') 
+    
+    with open(filename) as test_file:
+        json_data = json.load(test_file)
+        
+    #results = check_integrity()
 
-    results = check_integrity()
-
-    return render_template('integrity.html', checking_results = results)
+    return render_template('integrity.html', temp = json.dumps(json_data))
 
 
 ### Ruta para registrar un alumno dentro de un curso
