@@ -10,6 +10,7 @@ App = {
         await App.renderCertificado();
         await App.renderCertificadosDatatables();
         App.searchCertificado();
+        await App.listaritemsJSON();
     }, 
 
     loadEthereum: async () => {
@@ -169,26 +170,72 @@ App = {
     },
 
     searchCertificado:()=>{
-        $(document).ready(function() {
+        try{
+            $(document).ready(function() {
             
-            var table = $('#example').DataTable({
-                initComplete: function () {
-                    // Apply the search
-                    this.api().columns([4]).every( function () {
-                        var that = this;
-        
-                        $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                            if ( that.search() !== this.value ) {
-                                that
-                                    .search( this.value )
-                                    .draw();
-                            }
+                var table = $('#example').DataTable({
+                    initComplete: function () {
+                        // Apply the search
+                        this.api().columns([4]).every( function () {
+                            var that = this;
+            
+                            $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                                if ( that.search() !== this.value ) {
+                                    that
+                                        .search( this.value )
+                                        .draw();
+                                }
+                            } );
                         } );
-                    } );
-                }
+                    }
+                });
+            
             });
-        
-        });
+        }catch(e){
+            console.log("Error - Solo disponible en la vista busqueda por DNI:",e)
+        }
+    },
+
+    // Funcion que crea el items_json
+    listaritemsJSON: async() =>{
+        try{
+            const certificadoCounter = await App.certificadosContract.certificadoCounter();
+            const certificadoCounterNumber = certificadoCounter.toNumber();
+            const items_json = new Array();
+
+            for (let i = certificadoCounterNumber; i >= 1; i--){
+                const certificado = await App.certificadosContract.certificados(i);
+                const certificado_ap_materno = certificado[1];
+                const certificado_ap_paterno = certificado[2];
+                const certificado_dni = certificado[3];
+                const certificado_nombres = certificado[4];
+                const certificado_nombre_curso = certificado[5];
+                const certificado_nota = certificado[6];
+                const certificado_institucion = certificado[7];
+                const certificado_link = certificado[8];
+                const certificado_hash = certificado[9];
+                const certificado_condicion = certificado[10];
+                const certificado_fecha_inicio_fin = certificado[11];
+                
+                items_json.push({
+                    ap_materno:certificado_ap_materno,
+                    ap_paterno:certificado_ap_paterno,
+                    dni:certificado_dni,
+                    nombres:certificado_nombres,
+                    curso:certificado_nombre_curso,
+                    nota:certificado_nota,
+                    institucion:certificado_institucion,
+                    link:certificado_link,
+                    hash_image:certificado_hash,
+                    condicion:certificado_condicion,
+                    fecha_inicio_fin:certificado_fecha_inicio_fin
+                })
+            }
+            localStorage.setItem('testObject', JSON.stringify(items_json));
+            // console.log("Items_json : ",items_json);
+        } catch(e){
+            console.log("Error, solo disponible en la vista busqueda de dni : ",e);
+        } 
     },
 
     // Funcion para crear certificados 

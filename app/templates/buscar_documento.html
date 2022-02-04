@@ -53,13 +53,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
     <script src = "js/drag_and_drop.js"></script>
     <script>
-      var someJavaScriptVar = {{checking_results|tojson|safe}};
-      var items_json = someJavaScriptVar;
-
-      console.log("Desde buscar_coumento.html:",items_json);
-      /*for (var i = 0; i < items_json.length; i++){
-        console.log("Desde HMTL:",items_json[i]['nombres']);
-      }*/
+      const certificadosJSONFlask = {{temp | safe}};
     </script>
     <script src = "{{ url_for('static', filename = '/node_modules/@truffle/contract/dist/truffle-contract.min.js')}}"></script>
     <script type="text/javascript" src = "{{ url_for('static', filename = 'js/connect_blockchain.js') }}"></script>

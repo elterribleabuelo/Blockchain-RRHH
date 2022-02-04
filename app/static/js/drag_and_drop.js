@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         // Los datos que pasamos estan en forma de objeto de Javascript
 
         // Guardamos la variable items_json con localStorage para poder recibirla y leerla en otra vista
-        localStorage.setItem('testObject', JSON.stringify(items_json));
+        // localStorage.setItem('testObject', JSON.stringify(items_json));
 
         // Guardamos los id de las imágenes los cuales son los valores del hash de la blockchain con localStorage
         localStorage.setItem('testObjectID',JSON.stringify(ids));

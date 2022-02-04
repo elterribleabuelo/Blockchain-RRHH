@@ -299,15 +299,15 @@ def buscar_documento():
     with open(filename) as test_file:
         json_data = json.load(test_file)
     
-    items = []   # Registros que estan en la Blockchain
+    """items = []   # Registros que estan en la Blockchain
     registros = os.listdir("./blockchain")
     num_registros = len(registros)
     for i in range(1,num_registros):
         with open("./blockchain/" + str(i+1)) as f:
             block = json.load(f)
-            items.append(block)
+            items.append(block)"""
             
-    return render_template('buscar_documento.html', checking_results = items)
+    return render_template('buscar_documento.html', temp = json.dumps(json_data))
 
 ### Ruta para obtener los resultados de la búsqueda
 @app.route('/filtrado_CV')
