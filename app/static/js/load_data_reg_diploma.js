@@ -189,13 +189,16 @@ $imagen_diploma.addEventListener('change',function(){
     var myModal = new bootstrap.Modal(document.getElementById('ventana_modal'), {
         keyboard: false
       }); 
-
+    
+    // Aparece la primera ventana modal
     myModal.show();
 
     var vtn_modal = document.getElementsByClassName("modal");
     vtn_modal[0].addEventListener('click',function(event){
         //console.log("ESTOY AQUIIIIIIII");
         if(event.target.value == "yes"){
+
+            let html = '';
             
             const ref = firebase.storage().ref();
             //console.log(ref);
@@ -232,6 +235,7 @@ $imagen_diploma.addEventListener('change',function(){
                 alert("Debe seleccionar el diploma del participante");
             }
             else{
+
                 const metadata = {
                     contentType: file.type
                 };
@@ -259,11 +263,21 @@ $imagen_diploma.addEventListener('change',function(){
                 //document.getElementById("link").value = url;
             }
 
-
             //console.log(ref); // Lo muestra cuando da click al boton registrar
             
             // Desaparecemos la ventana
             myModal.hide();
+
+            // Aparece el progressbar y se llena de forma dinámica
+            document.getElementById("div-mostrar").style.display = "";
+            $(".progress-bar").animate({
+                width: "100%",
+            }, 3000,function(){
+                if ($(".progress-bar")[0].style.width == "100%"){
+                    $('#registrar').attr("disabled", false);	
+                }
+            });
+
         }
         else if(event.target.value == "no"){
             myModal.hide();
