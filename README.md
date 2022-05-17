@@ -51,6 +51,6 @@ Se recomienda el uso de un entorno virtual usando virtualenv. Así como también
 
 ## 3.Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=L9emh3EUuXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Link: https://www.youtube.com/watch?v=L9emh3EUuXQ
 
 </iframe>
