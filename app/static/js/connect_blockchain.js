@@ -244,6 +244,9 @@ App = {
             from: App.account
         });
         console.log(result.logs[0].args);
+        // Redirigimos al home
+        window.location.href = "/panel_admin_centro";
+
     }
 }
 

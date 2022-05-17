@@ -272,7 +272,7 @@ $imagen_diploma.addEventListener('change',function(){
             document.getElementById("div-mostrar").style.display = "";
             $(".progress-bar").animate({
                 width: "100%",
-            }, 3000,function(){
+            }, 10000,function(){
                 if ($(".progress-bar")[0].style.width == "100%"){
                     $('#registrar').attr("disabled", false);	
                 }
