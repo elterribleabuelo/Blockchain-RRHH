@@ -53,6 +53,6 @@ Se recomienda el uso de un entorno virtual usando virtualenv. Así como también
 
 <div style="text-align: center;">
   <br><br/>
-  <a href = "https://www.youtube.com/watch?v=L9emh3EUuXQ"><img src="assets/PortadaBlockDoc.png"></a>
+  <a href = "https://www.youtube.com/watch?v=BHlcNKi3QMI"><img src="assets/PortadaBlockDoc.png"></a>
   <br><br/>
 </div>
